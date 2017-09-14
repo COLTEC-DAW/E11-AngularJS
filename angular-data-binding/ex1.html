@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html ng-app ng-init="cel=0">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    </head>
+    <body>
+        <p>Temperatura em Celsius: 
+            <input type="number" ng-model="cel"> º
+            <h3>{{ cel*1.8 + 32 }} F</h3>
+            <h3>Kelvin: {{ cel+273 }} K</h3>
+        </p>
+    </body>
+</html>

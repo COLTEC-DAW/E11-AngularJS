@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html ng-app ng-init="usd=1.00">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    </head>
+    <body>
+        <p>Dolár: 
+            $ <input type="number" ng-model="usd">
+            <h3>R$ {{ usd*4.1 | currency }}</h3>
+            <h3>€ {{ usd*0.9 | currency }}</h3>
+        </p>
+    </body>
+</html>

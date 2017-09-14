@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    </head>
+    <body>
+        <h2>Sexo:</h2>
+        <select ng-model="sexo">
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+            <option value="n/a">N/A</option>
+        </select>
+
+        <h1>Seu sexo é: {{::sexo}}</h1>
+    </body>
+</html>
