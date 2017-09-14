@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app>
+    <head>
+        <title>Exercício 4</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    </head>
+    <body>
+        <h1>Vote apenas UMA vez</h1>
+        <p>Quem é melhor:</p>
+        <select name="herois" ng-model="melhor">
+            <option value="Batman">Batman</option>
+            <option value="Superman">Superman</option>
+        </select>
+        <p>Seu voto: {{::melhor}}</p>
+    </body>
+</html>

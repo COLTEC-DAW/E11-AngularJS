@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html ng-app ng-init="celsius=0">
+    <head>
+        <title>Exercício 1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    </head>
+    <body>
+        <p>Temperatura em Celsius: <input type="number" ng-model="celsius"></p>
+        <p>Temperatura em Fahrenheit: {{9*celsius/5 + 32}}</p>
+        <p>Temperatura em Kelvin: {{celsius + 273}}</p>
+    </body>
+</html>

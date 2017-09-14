@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app ng-init="nota=0">
+    <head>
+        <title>Exercício 3</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    </head>
+    <body>
+        <form>
+            Nome: <input type="text" ng-model="nome"><br/>
+            <textarea rows="5" cols="40" ng-model="review"></textarea><br/>
+            Nota:
+            <select name="nota" ng-model="nota">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </form>
+
+        <h2>Preview:</h2>
+        <h4>{{nome}}:</h4>
+        <p>{{review}}</p>
+        <p>Avaliação: {{nota}}</p>
+    </body>
+</html>
