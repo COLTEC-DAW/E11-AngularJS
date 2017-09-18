@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+	<h1>Contatos:</h1>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<h2>Novo contato:</h2>
+		<label>Nome:</label>
+		<input ng-model="name">
+		<label>Telefone:</label>
+		<input ng-model="phone">
+		<label>Email:</label>
+		<input ng-model="email">
+		<button ng-click="newContact()">Novo contato</button>
+		<hr>
+
+		<h2>Editar contato:</h2>
+		<p>Selecione na tabela o contato:</p>
+		<label>Nome:</label>
+		<input ng-model="editName">
+		<label>Telefone:</label>
+		<input ng-model="editPhone">
+		<label>Email:</label>
+		<input ng-model="editEmail">
+		<button ng-click="change()">Editar contato</button>
+		<hr>
+		<table>
+			<tr>
+				<th>Nome</th>
+				<th>Telefone</th>
+				<th>Email</th>
+			</tr>
+			<tr ng-repeat="c in contacts" ng-click="editContact(c.id)">
+				<td>{{c.name}}</td>
+				<td>{{c.phone}}</td>
+				<td>{{c.email}}</td>
+			</tr>
+		</table>
+
+	</div>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope){
+			$scope.name;
+			$scope.phone;
+			$scope.email;
+			$scope.editName;
+			$scope.editPhone;
+			$scope.editEmail;
+			$scope.id;
+			$scope.contacts=[];
+
+			$scope.newContact = function(){
+				$scope.contacts.push({name:$scope.name, phone:$scope.phone, email: $scope.email, id: $scope.contacts.length});
+			}
+			$scope.editContact = function(id){
+				var contact;
+				for(var i=0;i<$scope.contacts.length;i++){
+					if($scope.contacts[i].id==id){
+						contact = $scope.contacts[i];
+						$scope.id = i;
+					}
+				}
+
+				$scope.editName = contact.name;
+				$scope.editPhone = contact.phone;
+				$scope.editEmail = contact.email;
+			}
+
+			$scope.change = function(){
+				$scope.contacts[$scope.id].name = $scope.editName;
+				$scope.contacts[$scope.id].phone = $scope.editPhone;
+				$scope.contacts[$scope.id].email = $scope.editEmail;
+			}
+		});
+	</script>
+</body>
+</html>

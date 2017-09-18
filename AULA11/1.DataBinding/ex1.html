@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+	<h1>Temperaturas:</h1>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<p>Celsius -> Fahrenheint/Kelvin</p>
+		<input type="number" ng-model="celsius"></p>
+		<p>Celsius: {{celsius}}º</p>
+		<p>Fahrenheit: {{(1.8 *celsius) + 32}}º</p>
+		<p>Kelvin: {{celsius + 273}}º</p>
+	</div>
+
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope) {
+			$scope.celsius = 0;
+		});
+	</script>
+</body>
+</html>

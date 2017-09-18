@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+	<h1>Contatos:</h1>
+	<div ng-app="myApp" ng-controller="ContactController ">
+		<p>Salário:</p>
+		<input type="number" ng-model="salary"></p>
+		<p>Imposto: {{tax()}}</p>
+	</div>
+
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('ContactController ', function($scope) {
+			$scope.salary=0;
+			$scope.tax = function() {
+				var salary = $scope.salary;
+				if(salary<2000) return salary*0.1;
+				else if(salary>2000 && salary<	3500) return salary*0.2;
+				else return salary*0.3;
+			};
+		});
+	</script>
+</body>
+</html>

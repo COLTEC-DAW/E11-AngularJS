@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body ng-app="myApp">
+	<div>
+		<h1>Temperaturas:</h1>
+		<div ng-controller="temperaturaControllerCelsius">
+			<h3>Celsius -> Fahrenheint/Kelvin</h3>
+			<input type="number" ng-model="celsius"></p>
+			<p>Celsius: {{celsius}}º</p>
+			<p>Fahrenheit: {{(1.8 *celsius) + 32}}º</p>
+			<p>Kelvin: {{celsius + 273}}º</p>
+		</div>
+		<div ng-controller="temperaturaControllerFahrenheit">
+			<h3>Fahrenheint -> Celsius/Kelvin</h3>
+			<input type="number" ng-model="fahrenheit"></p>
+			<p>Fahrenheit: {{fahrenheit}}º</p>
+			<p>Celsius: {{(fahrenheit - 32) / 1.8}}º</p>
+			<p>Kelvin: {{(fahrenheit + 459.67) * 5/9}}º</p>
+		</div>
+		<div ng-controller="temperaturaControllerKelvin">
+			<h3>Celsius -> Fahrenheint/Kelvin</h3>
+			<input type="number" ng-model="kelvin"></p>
+			<p>Kelvin: {{kelvin}}º</p>
+			<p>Celsius: {{kelvin - 273}}º</p>
+			<p>Fahrenheit: {{(kelvin * 9/5) - 459.67}}º</p>
+		</div>
+	</div>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('temperaturaControllerCelsius', function($scope) {
+			$scope.celsius = 0;
+		});
+		app.controller('temperaturaControllerFahrenheit', function($scope) {
+			$scope.fahrenheit = 0;
+		});
+		app.controller('temperaturaControllerKelvin', function($scope) {
+			$scope.kelvin = 0;
+		});
+	</script>
+	</body>
+</html>
