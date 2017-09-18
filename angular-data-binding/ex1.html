@@ -6,8 +6,8 @@
     <body>
         <p>Temperatura em Celsius: 
             <input type="number" ng-model="cel"> º
-            <h3>{{ cel*1.8 + 32 }} F</h3>
-            <h3>Kelvin: {{ cel+273 }} K</h3>
+            <h3>{{ cel*1.8 + 32 | number:2 }} F</h3>
+            <h3>Kelvin: {{ cel+273 | number:2}} K</h3>
         </p>
     </body>
 </html>
