@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+    <body ng-app="meuApp">
+        <h1>Avaliação</h1>
+            
+        <div ng-controller="clique">
+
+            <button type="button" ng-click="botao()">Clique-me</button>
+
+
+            <p>Momento do primeiro clique: {{::hora}}</p>
+
+        </div>
+
+    </body>
+
+    <script>
+        var app = angular.module('meuApp', []);
+
+        app.controller('clique', function($scope){
+
+            $scope.botao = function(){
+                $scope.hora = Date();
+            }
+        });
+    </script>
+
+
+</html>

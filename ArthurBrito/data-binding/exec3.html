@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+    <body ng-app="meuApp">
+        <h1>Avaliação</h1>
+            
+        <div ng-controller="nota">
+
+            <label>Nota: </label>
+            <input type="number" max="5" min="0" ng-model="nota">
+            <p>Comentário:</p>
+            <textarea ng-model="comentario" cols="100" rows="5"></textarea>
+
+            <h3>Preview</h3>
+            <p>Nota: {{nota}}</p>
+            <p>Comentário:</p>
+            <p>{{comentario}}</p>
+
+        </div>
+
+    </body>
+
+    <script>
+        var app = angular.module('meuApp', []);
+
+        app.controller('nota', function($scope){
+            $scope.nota = 0;
+        });
+    </script>
+
+
+</html>
