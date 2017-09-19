@@ -3,7 +3,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <body>
 	<h1>Contatos:</h1>
-	<div ng-app="myApp" ng-controller="ContactController ">
+	<div ng-app="myApp" ng-controller="control">
 		<p>Salário:</p>
 		<input type="number" ng-model="salary"></p>
 		<p>Imposto: {{tax()}}</p>
@@ -11,7 +11,7 @@
 
 	<script>
 		var app = angular.module('myApp', []);
-		app.controller('ContactController ', function($scope) {
+		app.controller('control', function($scope) {
 			$scope.salary=0;
 			$scope.tax = function() {
 				var salary = $scope.salary;
