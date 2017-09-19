@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+  <meta charset="utf-8">
+  <title>Exercicio 2</title>
+</head>
+    <body>
+        <div>
+            <p>Dólar: <input type="number" ng-model="dolar"></p>
+        </div>
+        <div>
+            <p>Real: {{dolar* 4.1 || 0}}</p>
+        </div>
+        <div>
+            <p>Euro: {{dolar* 0.9 || 0}}</p>
+        </div>
+    </body>
+</html>
