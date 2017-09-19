@@ -22,7 +22,14 @@ Desenvolvimento de Aplicativos Web
 ```
 3. **ex3.html:** Implemente um formulário que faça o preenchimento de um *review* de um produto. Esse formulário deverá conter campos para o nº de estrelas (0 a 5) e para o comentário do *review*. Ao preencher os campos, um preview do comentário deve aparecer após o formulário.
 ```html
+  <p>Quão bão o trem é (0-5): <input type="number" max="5" min="0" ng-model="nota">
+  <br>Comente: <input type="text" ng-model="comentario"></p>
+  <h4>Preview do review: </h4>
+  <p>Nota: {{nota | number:0}} <br>
+  Comentário: {{comentario}}</p>
 ```
 4. **ex4.html:** Implemente um exemplo de utilização do One-time data-binding.
 ```html
+  <p>Multiplique 1 por esse numero (imutavel): <input type="number" ng-model="multi">
+  <br>Resultado: {{::multi}}</p>
 ```
