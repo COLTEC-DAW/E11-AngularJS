@@ -13,6 +13,54 @@
       <h2>Conversor de temperatura</h2>
       Celsius: <input type="text" ng-model="tempCtrl.celsius"> <br>
       Kelvin: {{tempCtrl.celsiusToKelvin(tempCtrl.celsius)}} <br>
+      Fahrenheit: {{tempCtrl.celsiusToFahrenheit(tempCtrl.celsius)}} <br>
     </div>
+
+    <div ng-controller="RouboController as rouboCtrl">
+      <h2>Calculadora de roubo</h2>
+      Salario: <input type="text" ng-model="rouboCtrl.salario"> <br>
+      Roubo: {{rouboCtrl.calculateTheft(rouboCtrl.salario)}}
+    </div>
+
+    <div ng-controller="ReviewController as reviewCtrl">
+      <h2>Review</h2>
+      Estrelas: <input type="number" min="0" max="5" ng-model="reviewCtrl.review.stars"> <br>
+      Comentario: <input type="text" ng-model="reviewCtrl.review.comment"> <br>
+      <button ng-click="reviewCtrl.addReview(reviewCtrl.review.stars, reviewCtrl.review.comment)">Submit Review</button>
+      <div ng-repeat="review in reviewCtrl.reviews track by $index">
+        Review number: {{$index}} <br>
+        - Stars: {{review.stars}} <br>
+        - Comment: {{review.comment}}
+      </div>
+    </div>
+    
+    <div ng-controller="ContactController as contactCtrl">
+      <h2>Contacts</h2>
+      Name: <input type="text" ng-model="contactCtrl.contact.name"> <br>
+      Phone: <input type="text" ng-model="contactCtrl.contact.phone"> <br>
+      Email: <input type="text" ng-model="contactCtrl.contact.email"> <br>
+      <button ng-click="contactCtrl.handleBtnClick(contactCtrl.contact.name, contactCtrl.contact.phone, contactCtrl.contact.email)">{{contactCtrl.btnMessage}}</button>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr ng-repeat="contact in contactCtrl.contacts track by $index">
+          <th>{{contact.name}}</th>
+          <th>{{contact.phone}}</th>
+          <th>{{contact.email}}</th>
+          <th>
+            <button ng-click="contactCtrl.removeContact($index)">X</button>
+          </th>
+          <th>
+            <button ng-click="contactCtrl.editContact($index)">Edit</button>
+          </th>
+        </tr>
+      </table>
+    </div>
+
   </body>
 </html>
