@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <title>ReviewController</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+        <script src="app.js"></script>
+        <link href="style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div ng-controller="ReviewController">
+            <div class="col4">
+                <h2>Sua Review</h2>
+                <textarea ng-model="reviewAtual" rows="7" cols="50"></textarea><br>
+                <input type="number" min="0" max="5" ng-model="estrelasAtual"> estrela(s).<br>
+                <button ng-click="addReview(reviewAtual, estrelasAtual)">Adicionar Review</button>
+
+                <h3>Preview</h3>
+                <textarea disabled="disabled" rows="7" cols="50"> {{reviewAtual}} </textarea><br>
+                Nota: {{estrelasAtual}} estrela(s).
+            </div>
+            <div class="col8">
+                <h2>Reviews Anteriores</h2>
+                <div class="col4" ng-repeat="r in reviews">
+                    <textarea disabled="disabled" rows="7" cols="50">{{r.review}}</textarea><br>
+                    <b>{{r.estrela}} estrelas</b>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

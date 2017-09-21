@@ -13,6 +13,14 @@
       <h2>Conversor de temperatura</h2>
       Celsius: <input type="text" ng-model="tempCtrl.celsius"> <br>
       Kelvin: {{tempCtrl.celsiusToKelvin(tempCtrl.celsius)}} <br>
+      Fahrenheit: {{tempCtrl.celsiusToFahrenheit(tempCtrl.celsius)}} <br>
+    </div>
+
+    <div ng-controller="ImpostoController as imposto">
+
+      <h2>Calculadora de Impostos</h2>
+      Seu salário: R$<input type="number" min="0" ng-model="imposto.salario"><br>
+      O total de imposto a ser pago é: {{imposto.calculaImposto(imposto.salario) | currency: "R$"}}
     </div>
   </body>
 </html>
