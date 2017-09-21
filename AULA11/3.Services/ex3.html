@@ -1,0 +1,40 @@
+<!-- Crie um Serviço chamado LogService. Esse serviço deverá fazer o log de determinadas informações durante a execução do aplicativo. Para isso, o serviço deverá conter a função log(nivel, mensagem), onde o parâmetro nível indica a severidade da mensagem (0 = aviso, 1 = erro), e o parâmetro mensagem contém a mensagem propriamente dita. Além disso o log deverá imprimir a data/hora do momento do recebimento da mensagem. Dica: utilize as funções console.log e console.error para imprimir a mensagens de aviso e erro, respectivamente.
+-->
+
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body ng-app="myApp">
+	<h1>Logs!</h1>
+
+	<div ng-controller="LogController">
+		<label>Warning:</label>
+		<input type="text" ng-model="warningMsg">
+		<button ng-click="showWarning()">Mostrar warning!</button>
+		<label>Erro:</label>
+		<input type="text" ng-model="errorMsg">
+		<button ng-click="showError()">Mostrar erro!</button>
+	</div>
+
+	<script>
+		var app = angular.module('myApp', []);
+		app.service('logger', function() {
+			this.log = function(type,msg){
+				msg += '\n' + new Date();
+				if(type==0)
+					console.log(msg);
+				else if(type==1)
+					console.error(msg);
+			}
+		});
+		app.controller('LogController', function($scope, logger) {
+			$scope.showWarning = function(){
+				logger.log(0,$scope.warningMsg);
+			}
+			$scope.showError = function(){
+				logger.log(1,$scope.errorMsg);
+			}
+		});
+	</script>
+</body>
+</html>

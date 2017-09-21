@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+	<h1>Temperaturas:</h1>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<p>Celsius -> Fahrenheint/Kelvin</p>
+		<input type="number" ng-model="celsius"></p>
+		<p>Celsius: {{celsiusT()}}º</p>
+		<p>Fahrenheit: {{fahrenheitT()}}º</p>
+		<p>Kelvin: {{kelvinT()}}º</p>
+	</div>
+
+	<script>
+		var app = angular.module('myApp', []);
+		app.service('celsiusTemp', function() {
+			this.celsius = function (x) {
+				return x;
+			}
+			this.fahrenheit = function (x) {
+				return (1.8 * x) + 32;
+			}
+			this.kelvin = function (x) {
+				return x + 273;
+			}
+		});
+		app.controller('myCtrl', function($scope, celsiusTemp) {
+			$scope.celsius = 0;
+			$scope.celsiusT = function(){
+				return celsiusTemp.celsius($scope.celsius);
+			};
+			$scope.fahrenheitT = function(){
+				return celsiusTemp.fahrenheit($scope.celsius);
+			};
+			$scope.kelvinT = function(){
+				return celsiusTemp.kelvin($scope.celsius);
+			};
+		});
+
+	</script>
+</body>
+</html>
