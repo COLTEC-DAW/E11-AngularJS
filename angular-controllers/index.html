@@ -9,7 +9,7 @@
   </head>
   <body>
 
-    <div ng-controller="TemperaturaController as tempCtrl">
+    <div ng-controller="TemperaturaController as tempCtrl" style="background-color:yellow">
 
       <h2>Conversor de temperatura</h2>
         <p> Celsius: <input type="text" ng-model="tempCtrl.celsius"></p>
@@ -17,11 +17,77 @@
         <p> Fahrenheit: {{tempCtrl.celsiusToFahrenheit(tempCtrl.celsius)}}</p>
     </div>
 
-    <div ng-controller="ImpostoController as impostoCtrl">
-
+    <div ng-controller="ImpostoController as impostoCtrl" style="background-color:#33778B">
       <h2>Calculadora de imposto</h2>
-        <p> Salário: <input type="text" ng-model="impostoCtrl.salario"></p>
-        <p> Seu imposto: {{impostoCtrl.calculaImposto(impostoCtrl.salario)}} </p>
+      <p> Salário: <input type="text" ng-model="impostoCtrl.salario"></p>
+      <p> Seu imposto: {{impostoCtrl.calculaImposto(impostoCtrl.salario)}} </p>
+    </div>
+
+    <div ng-controller="reviewController as reviewCtrl" style="background-color:red">
+      <h2>Comentário</h2>
+      <div>
+        <p>Estrelas: <input type="number" min="1" max="5" ng-model="reviewCtrl.estrelas"></p>
+      </div>
+      <div>
+        <textarea name="comentario" ng-model="reviewCtrl.comentario" cols="30" rows="10">Comentário</textarea>
+        <button ng-click="reviewCtrl.addInfo(reviewCtrl.comentario, reviewCtrl.estrelas)">Confirma</button>        
+      </div>
+      <div>
+        <h3>Preview:</h3>
+        <p>Comentário: {{reviewCtrl.comentario}}</p>
+        <p>Estrelas: {{reviewCtrl.estrelas}}</p>
+      </div>
+      <div>
+        <h3>Outros comentários:</h3> 
+        <div ng-repeat="comentario in reviewCtrl.all">
+          <p>Comentário: {{comentario.comentario}}</p>
+          <p>Estrelas: {{comentario.estrelas}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div ng-controller="ContactController as contCtrl" style="background-color:orange">
+      <h2>Contatos</h2>
+      <div>
+        <label>
+          <p>Nome</p>
+          <input type="text" ng-model="contCtrl.nome">
+          <p>Telefone</p>
+          <input type="text" ng-model="contCtrl.telefone">
+          <p>Email</p>
+          <input type="text" ng-model="contCtrl.email">
+          <button ng-click="contCtrl.add(contCtrl.nome, contCtrl.telefone, contCtrl.email)">Enviar</button>
+        </label>
+      </div>
+      <h3>Lista de Contatos:</h3>
+      <div>
+        <table>
+          <tr>
+            <th>Nome</th>
+            <th>Telefone</th> 
+            <th>Email</th>
+            <th>Editar</th>
+            <th>Deletar</th>
+            
+          </tr>
+          <tr ng-repeat="contato in contCtrl.contatos">
+            <td>
+              <p>{{contato.nome}}</p>
+            </td>
+            <td>
+              <p>{{contato.telefone}}</p>
+            <td>
+              <p>{{contato.email}}</p>
+            </td>
+            <td>
+              <button ng-click="contCtrl.edit(contato)">Editar Contato</button>
+            </td>
+            <td>
+              <button ng-click="contCtrl.deleta(contato)">Deletar Contato</button>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
     
   </body>

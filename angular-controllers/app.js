@@ -46,9 +46,47 @@ app.controller('ImpostoController', function(){
 });
 
 app.controller('reviewController', function(){
-  
+
+  this.comentario = "";
+  this.estrelas = 1;
+  this.all = [];
+
+  this.addInfo = function(comentario, estrelas){
+    this.all.push({
+      comentario: comentario,
+      estrelas: estrelas.toString()
+    });
+  };
 });
 
 app.controller('ContactController', function(){
+
+  this.nome = "";
+  this.telefone = "";
+  this.email = "";
+  this.contatos = [];
+
+  this.add = function(nome, telefone, email){
+    this.contatos.push({
+      nome: nome,
+      telefone: telefone,
+      email: email
+    });
+  };
+
+  this.edit = function(contato){
+    var new_name = prompt("Digite o novo nome:", contato.nome);
+    var new_telefone = prompt("Digite o novo telefone:", contato.telefone);
+    var new_email = prompt("Digite o novo email:", contato.email);
+
+    contato.nome = new_name;
+    contato.telefone = new_telefone;
+    contato.email = new_email;
+    
+  };  
+
+  this.deleta = function(contato){
+    this.contatos.splice(this.contatos.indexOf(contato), 1);
+  };
 
 });
