@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Exercício AngularJS: Controllers</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <h2>Carrinho de Compras</h2>
+    <div ng-controller="ComprasController as comprasCtrl">
+      <h3>Adicione um item</h3>
+      <table>
+        <tr>
+          <th>Descrição</th>
+          <th>Preço</th>
+          <th>Quantidade</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>
+            <input type="text" ng-model="comprasCtrl.item.descricao">
+          </td>
+          <td>
+            <input type="number" ng-model="comprasCtrl.item.preco">
+          </td>
+          <td>
+            <input type="number" ng-model="comprasCtrl.item.quantidade">
+          </td>
+          <td><button ng-click="comprasCtrl.addItem(comprasCtrl.item)">Adicionar</button></td>
+        </tr>
+      </table>
+      <p>
+        
+      {{comprasCtrl.lista}}
+      </p>
+    </div>
+    <h3>Veja os itens de seu carrinho</h3>
+    <div ng-controller="CheckoutController as checkoutCtrl">
+      <table>
+        <tr>
+          <th>Descrição</th>
+          <th>Preço</th>
+          <th>Quantidade</th>
+        </tr>
+        <tr ng-repeat="item in checkoutCtrl.itensNoCarrinho track by $index">
+          <th>{{item.descricao}}</th>
+          <th>{{item.preco}}</th>
+          <th>{{item.quantidade}}</th>
+        </tr>
+      </table>
+      <p><strong>
+        Preço total: {{checkoutCtrl.total(checkoutCtrl.itensNoCarrinho)}}
+      </strong></p>
+    </div>
+  </body>
+</html>
