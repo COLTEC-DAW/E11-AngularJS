@@ -5,14 +5,57 @@
     <title>Exercício AngularJS: Controllers</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
-    <script src="app.js"></script>
+    <script src="controllers.js"></script>
   </head>
   <body>
-    <div ng-controller="TemperaturaController as tempCtrl">
+      <div ng-controller="TemperaturaController as tempCtrl">
+          <h2>Conversor de temperatura</h2>
+          Celsius: <input type="number" ng-model="tempCtrl.celsius"> °C<br>
+          Kelvin: {{ tempCtrl.celsiusToKelvin(tempCtrl.celsius) }} °K<br>
+          Fahrenheit: {{ tempCtrl.celsiusToFahrenheit(tempCtrl.celsius) }} °F<br>
+        </div>
+    <br>
+    <div ng-controller="ImpostoController as impCtrl">
+        <h2>Calculador de imposto</h2>
+        Salário: R$ <input type="number" ng-model="impCtrl.salary"> <br>
+        Imposto a ser pago: R{{impCtrl.calculateTax(impCtrl.salary) | currency}} <br>
+    </div>
+    <br>
+    <div ng-controller="ReviewController as revCtrl">
+        <h2>Avalindo Emoji o Filme</h2>
+        Número de estrelas: <input type="number" ng-model="revCtrl.stars" min='0' max='5'> <br>
+        Comentário: <br>
+        <textarea rows="8" cols="30" ng-model="revCtrl.comment"></textarea><br>
+        <button ng-click="revCtrl.postReview(revCtrl.stars, revCtrl.comment, revCtrl.reviews)">Enviar review</button>
 
-      <h2>Conversor de temperatura</h2>
-      Celsius: <input type="text" ng-model="tempCtrl.celsius"> <br>
-      Kelvin: {{tempCtrl.celsiusToKelvin(tempCtrl.celsius)}} <br>
+        <p style="font-weight: bold">Preview:</p>
+        <div style="border-style: groove">
+          <h4>Estrelas: {{ revCtrl.stars }}</h4>
+          <p>{{ revCtrl.comment }}</p>
+        </div>
+        
+        <div ng-repeat="x in revCtrl.reviews">
+          <div style="border-style: inset">
+            <h4>Estrelas: {{ x.stars }}</h4>
+            <p>{{ x.comment }}</p>
+          </div>
+        </div>
+    </div>
+
+    <div ng-controller="ContactController">
+      <h2>Lista de Contactos</h2>
+      Nome: <input type="text" ng-model="contact.nome"><br>
+      Telefone: <input type="number" ng-model="contact.telefone" ><br>
+      E-mail: <input type="text" ng-model="contact.email">
+      <button ng-click="addContact(contact, contactList)">Adicionar contacto</button>
+
+      <table border="1">
+        <tr ng-repeat="x in contactList" style="border-style: inset">
+          <td>{{ x.nome }}</td>
+          <td>{{ x.telefone }}</td>
+          <td>{{ x.email }}</td>
+          </tr>
+        </table>
     </div>
   </body>
 </html>
