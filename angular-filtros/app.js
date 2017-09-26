@@ -26,7 +26,7 @@ app.controller('FuncionariosController', function() {
     },
     {
       name: "Ana",
-      cpf: 08007611134,
+      cpf: 18007611134,
       email: "ana@a.com",
       phone: 2125366556,
       salary: 5500
@@ -47,14 +47,14 @@ app.controller('FuncionariosController', function() {
     },
     {
       name: "Matheus",
-      cpf: 07689155189,
+      cpf: 17689155189,
       email: "matheus@m.com",
       phone: 5789550046,
       salary: 3700
     },
     {
       name: "Clara",
-      cpf: 06587921125,
+      cpf: 16587921125,
       email: "mariaclara@maria.com",
       phone: 3125168998,
       salary: 5800
@@ -68,4 +68,12 @@ app.controller('FuncionariosController', function() {
     }
   ];
 
+});
+
+app.filter('cpf', function() {
+  return function(text) {
+    var cpf = text.toString();
+    var vetor = cpf.match(/.{1,3}/g);
+    return vetor[0] + '.' + vetor[1] + '.' + vetor[2] + '-' + vetor[3];
+  }
 });
