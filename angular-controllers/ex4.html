@@ -11,33 +11,32 @@
     <div ng-controller="contactController as contactCtrl">
 
       <h2>Lista de Contatos:</h2>
-      <table>
+      <table border="1">
           <tr>
+              <th>Linha</th>
               <th>Nome</th>
               <th>Email</th>
               <th>Telefone</th>
           </tr>
-          <tr ng-repeat="ctc in contacts">
+          <tr ng-repeat="ctc in contactCtrl.contacts">
               <td>{{ctc.index}}</td>
               <td>{{ctc.nome}}</td>
               <td>{{ctc.email}}</td>
               <td>{{ctc.telefone}}</td>
-              <td>
-                  <button ng-click="removeContact(ctc.index)">DELETAR</button>
-              </td>
+              <td><button ng-click="contactCtrl.removeContact(ctc.index)">DELETAR</button></td>
           </tr>
       </table>
         <h4>Novo contato:</h4>
             Nome: <input type="text" ng-model="contactCtrl.nome"> <br>
             Email: <input type="text" ng-model="contactCtrl.email"> <br>
             Telefone: <input type="text" ng-model="contactCtrl.telefone"> <br>
-            <button ng-click="addContact(contactCtrl.nome, contactCtrl.email, contactCtrl.telefone)">NOVO</button>
+            <button ng-click="contactCtrl.addContact(contactCtrl.nome, contactCtrl.email, contactCtrl.telefone)">NOVO</button>
         <h4>Alterar contato:</h4>
             Linha: <input type="text" ng-model="contactCtrl.linha"> <br>
             Nome: <input type="text" ng-model="contactCtrl.nome"> <br>
             Email: <input type="text" ng-model="contactCtrl.email"> <br>
             Telefone: <input type="text" ng-model="contactCtrl.telefone"> <br>
-            <button ng-click="editContact(contactCtrl.linha, contactCtrl.nome, contactCtrl.email, contactCtrl.telefone)">EDIT</button>
+            <button ng-click="contactCtrl.editContact(contactCtrl.linha, contactCtrl.nome, contactCtrl.email, contactCtrl.telefone)">EDIT</button>
     </div>
   </body>
 </html>

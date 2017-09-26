@@ -54,7 +54,7 @@ app.controller("contactController", function(){
 	i = 0;
 
 	this.addContact = function(nome, email, telefone){
-		newContact = {"index": i,"nome":nome, "email":email, "telefone":telefone};
+		newContact = {"index": i, "nome":nome, "email":email, "telefone":telefone};
 		i++;
 		this.contacts.push(newContact);
 		console.log(this.contacts);
@@ -66,5 +66,6 @@ app.controller("contactController", function(){
 
 	this.removeContact = function(index){
 		this.contacts.splice(index, 1);
+		for (i=index; this.contacts[i]!=null; i++) this.contacts[i].index--;
 	}
 });
