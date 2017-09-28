@@ -10,41 +10,42 @@
   </head>
   <body ng-app="FuncionariosApp" ng-controller="FuncionariosController as funcCtrl">
 
-    <input type="text" ng-model="searchInput">
+    Filtragem por nome: <input type="text" ng-model="searchInput"/><br>
+    Limite de Exibição: <input type="number" min="0" ng-model="limit"/>
 
-    <table>
-      <th>
-        <td>
+    <table border="1">
+      <tr>
+        <th>
           <b>Nome</b>
-        </td>
-        <td>
+        </th>
+        <th>
           <b>CPF</b>
-        </td>
-        <td>
+        </th>
+        <th>
           <b>E-mail</b>
-        </td>
-        <td>
+        </th>
+        <th>
           <b>Telefone</b>
-        </td>
-        <td>
+        </th>
+        <th>
           <b>Salário</b>
-        </td>
-      </th>
-      <tr ng-repeat="employee in funcCtrl.employees">
+        </th>
+      </tr>
+      <tr ng-repeat="employee in funcCtrl.employees | filter: searchInput |  orderBy: 'name' | limitTo: limit">
         <td>
           {{employee.name}}
         </td>
         <td>
-          {{employee.cpf}}
+          {{employee.cpf | cpfFormat}}
         </td>
         <td>
           {{employee.email}}
         </td>
         <td>
-          {{employee.phone}}
+          {{employee.phone | telFormat}}
         </td>
         <td>
-          {{employee.salary}}
+          R{{employee.salary | currency}}
         </td>
       </tr>
     </table>
