@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Log Service</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body ng-controller="LogController">
+    <h2>LogService</h2>
+    <textarea rows="8" cols="80" ng-model='log.msg'></textarea><br>
+    <select name="level" ng-model='log.lvl'>
+      <option value="0">0 - Aviso</option>
+      <option value="1">1 - Erro</option>
+    </select><br>
+    <button ng-click='addLog(log)'>Enviar Log</button>
+  </body>
+</html>

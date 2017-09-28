@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <title>Carrinhos de Compras</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+        <script src="app.js"></script>
+    </head>
+    <body>
+        <div ng-controller="ComprasController">
+            <h2>Adicionando itens ao carrinho</h2>
+            Item: <input type="text" ng-model="item.item"><br>
+            Descricao: <input type="text" ng-model="item.descricao"><br>
+            Preco: <input type="number" min="0" ng-model="item.preco"><br>
+            Quantidade: <input type="number" min="0" ng-model="item.quantidade"><br>
+            <button ng-click="adicionar(item)">Adicionar ao Carrinho</button>
+        </div>
+        <div ng-controller="CheckoutController">
+            <h2>Seu Carrinho:</h2>
+            <div ng-repeat="n in listaItens">
+                <h4>{{n.item}} - {{n.descricao}} - R{{n.preco | currency}} - {{n.quantidade}}</h4>
+            </div>
+            <h4>Preco: R{{mostrar() | currency}}</h4>
+        </div>
+    </body>
+</html>
