@@ -1,23 +1,13 @@
-var app = angular.module('myApp', ["somaService"]);
+var app = angular.module('myApp', ["tempService"]);
 
-app.controller('ComprasController', ["$scope", "carrinhoService", function($scope , carrinhoService) {
-	console.log("CONTROLLER 1");
-  this.compras = [];
+app.controller('TemperaturaController', ["$scope", "tempService", function($scope , tempService) {
+	console.log("CONTROLLER");
+  this.celsius = 0;
+	$scope.Kelvin = 0;
+	$scope.Fahrenheit=0;
 
-	this.poeNoCarrinho = function (coisa) {
-		console.log("comprando");
-		compras.push(coisa);
+	this.muda = function () {
+		$scope.Kelvin = tempService.celsiusToKelvin(this.celsius);
+		$scope.Fahrenheit = tempService.celsiusToFahrenheit(this.celsius);
 	};
-}])
-
-app.controller("CheckoutController", ["$scope", function($scope){
-	console.log("CONTROLLER 2");
-	this.precoTotal = 0;
-
-	this.novaCoisa = function(preco) {
-		this.precoTotal += preco;
-	}
-	this.tiraCoisa = function(preco) {
-		this.precoTotal -= preco;
-	}
 }]);
