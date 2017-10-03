@@ -33,19 +33,19 @@
         </th>
       </tr>
       <tr ng-repeat="employee in funcCtrl.employees | filter: searchInput | orderBy: 'name' | limitTo: limitador">
-        <td>
+        <td style="padding: 5px;">
           {{employee.name}}
         </td>
-        <td>
+        <td style="padding: 5px;">
           {{employee.cpf | cpf}}
         </td>
-        <td>
+        <td style="padding: 5px;">
           {{employee.email}}
         </td>
-        <td>
-          {{employee.phone}}
+        <td style="padding: 5px;">
+          {{employee.phone | telefone}}
         </td>
-        <td>
+        <td style="padding: 5px;">
           {{employee.salary | currency:'R$'}}
         </td>
       </tr>

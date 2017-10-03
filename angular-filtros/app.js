@@ -70,10 +70,20 @@ app.controller('FuncionariosController', function() {
 
 });
 
+// Filtro do CPF
 app.filter('cpf', function() {
   return function(text) {
     var cpf = text.toString();
     var vetor = cpf.match(/.{1,3}/g);
     return vetor[0] + '.' + vetor[1] + '.' + vetor[2] + '-' + vetor[3];
+  }
+});
+
+// Filtro do Telefone
+app.filter('telefone', function() {
+  return function(text) {
+    var telefone = text.toString();
+    var vetor = telefone.match(/.{1,2}/g);
+    return '(' + vetor[0] + ')' + vetor[1] + vetor[2] + '-' + vetor[3] + vetor[4];
   }
 });
