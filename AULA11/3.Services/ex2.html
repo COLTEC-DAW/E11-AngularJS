@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body ng-app="myApp">
+	<h1>Carrinho!</h1>
+
+	<div ng-controller="ComprasController">
+		<label> Descrição:</label>
+		<input type="text" ng-model="desc">
+		<label> Preço:</label>
+		<input type="number" ng-model="price">
+		<label> Quantidade:</label>
+		<input type="text" ng-model="qt">
+		<button ng-click="addItems()">Colocar no carrinho</button>
+	</div>
+
+	<div ng-controller="CheckoutController">
+		<h3>Total: {{getTotal()}}</h3>
+
+		<div ng-repeat="i in getItems()">
+			<p>Descrição:{{i.desc}}</p>
+			<p>Preço: {{i.price}}</p>
+			<p>Quantidade: {{i.qt}}</p>
+			<hr>
+		</div>
+	</div>
+
+
+	<script>
+		var app = angular.module('myApp', []);
+		app.service('car', function() {
+			var carItems = [];
+			this.addItem = function (obj) {
+				carItems.push(obj);
+			}
+			this.getAll = function(){
+				return carItems;
+			}
+			this.total = function(){
+				var s = 0;
+				for(var i=0;i<carItems.length;i++)
+					s+= (carItems[i].price * carItems[i].qt);
+				return s;
+			}
+		});
+		app.controller('ComprasController', function($scope, car) {
+			$scope.addItems = function(){
+				car.addItem({desc: $scope.desc, price: $scope.price, qt: $scope.qt});
+			}
+		});
+		app.controller('CheckoutController', function($scope, car) {
+			$scope.getItems = function(){
+				return car.getAll();
+			}
+			$scope.getTotal = function(){
+				return car.total();
+			};
+		});
+	</script>
+</body>
+</html>

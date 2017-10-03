@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+	<h1>Conversão:</h1>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<input type="number" ng-model="usd"></p>
+		<p>USD: {{usd}}</p>
+		<p>BRL: {{usd * 4.10 }}</p>
+		<p>EUR: {{usd * 0.9 }}</p>
+	</div>
+
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope) {
+			$scope.usd = 0;
+		});
+	</script>
+</body>
+</html>
