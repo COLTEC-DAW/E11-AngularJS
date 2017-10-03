@@ -1,0 +1,23 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+<script src="app.js"></script>
+</head>
+
+<body ng-app="myApp">
+	<h1>LogService</h1>
+		
+	<div ng-controller="ControllerExibe as Ctrl">
+
+		<p>Mensagem:</p>
+		<textarea ng-model="msg" cols="100" rows="5"></textarea>
+		<label>Nível: </label>
+		<input type="number" min="0" max="1" ng-model="nivel">
+		
+		<button ng-click="Ctrl.inf(nivel, msg)">Enviar</button>
+
+		<p>Mensagem:</p>
+		<p>{{Ctrl.msg}}</p>
+	
+	</div>
+
+</body>
+</html>

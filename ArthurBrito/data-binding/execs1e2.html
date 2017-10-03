@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <body ng-app="myApp">
+        <h1>Conversor</h1>
+            
+        <div ng-controller="temperatura">
+
+            <h2>Temperatura</h2>
+            <label>Celsius: </label>
+            <input type="number" ng-model="celsius">
+            <p>Fahrenheit: {{fahrenheit()}}</p>
+            <p>Kelvin: {{kelvin()}}</p>
+        </div>
+
+        <div ng-controller="moeda">
+
+            <h2>Moeda</h2>
+            <label>Dólar</label>
+            <input type="number" ng-model="dolar">
+            <p>Real: {{real()}}</p>
+            <p>Euro: {{euro()}}</p>            
+
+        </div>
+
+    </body>
+
+    <script>
+            var app = angular.module('myApp', []);
+
+            app.controller('temperatura', function($scope){
+                $scope.celsius = 0;
+
+                $scope.fahrenheit = function(){
+                    return (($scope.celsius * 1.8)+32);
+                }
+
+                $scope.kelvin = function(){
+                    return ($scope.celsius +273);
+                }
+            });
+
+            app.controller('moeda', function($scope){
+                $scope.dolar = 0;
+
+                $scope.real = function(){
+                    return ($scope.dolar * 4.1);
+                }
+
+                $scope.euro = function(){
+                    return ($scope.dolar * 0.9);
+                }
+            });
+    </script>
+</html>

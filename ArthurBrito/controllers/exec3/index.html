@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Exercício AngularJS: Controllers</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <body ng-app="meuApp">
+    <h1>Comentários</h1>
+        
+    <div ng-controller="reviewController as tempCtrl">
+
+        <label>Nota: </label>
+        <input type="number" max="5" min="0" ng-model="nota">
+        <p>Comentário:</p>
+        <textarea ng-model="comentario" cols="100" rows="5"></textarea>
+        <button ng-click="tempCtrl.salvaComentarios(nota, comentario)">Salvar</button>
+
+        <h3>Preview</h3>
+        <p>Nota: {{nota}}</p>
+        <p>Comentário:</p>
+        <p>{{comentario}}</p>
+
+        <h3>Comentários</h3>
+        <div ng-repeat="comentario in tempCtrl.comentarios">
+          <p>{{comentario.nota}}</p>
+          <p>{{comentario.comentarios}}</p>
+        </div>
+
+    </div>
+
+  </body>
+</html>

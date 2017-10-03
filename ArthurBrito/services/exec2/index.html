@@ -1,0 +1,48 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+<script src="app.js"></script>
+</head>
+
+<body ng-app="myApp">
+<h1>Compras</h1>
+    
+<div ng-controller="ControllerAdiciona as tempCtrl">
+
+			<h3>Adicionar item</h3>
+			<label>Preco: </label>
+			<input type="number" ng-model="preco">
+			<label>Quantidade: </label>
+			<input type="number" ng-model="quantidade">
+			<p>Descricao:</p>
+			<textarea ng-model="descricao" cols="100" rows="5"></textarea>
+			<button ng-click="tempCtrl.adicionar(descricao, preco, quantidade)">Salvar</button>
+	
+			<h3>Pré-visualizacão</h3>
+			<p>R$ {{preco}}</p>
+			<p>Quantidade: {{quantidade}}</p>
+			<p>Descricao:</p>
+			<p>{{descricao}}</p>
+	
+			  <h3>Itens adicionados</h3>
+			
+			<div ng-controller="ControllerExibe as tempCtrl2">
+				<table>
+					<tr>
+						<th>Descricao</th>
+						<th>Preco</th>
+						<th>Quantidade</th>
+					</tr>
+				
+					<tr ng-repeat="item in tempCtrl2.vetor">
+						<td>{{item.descricao}}</td>
+						<td>{{item.preco}}</td>
+						<td>{{item.quantidade}}</td>
+					</tr>
+				</table>
+
+			</div>
+
+  
+</div>
+
+</body>
+</html>
