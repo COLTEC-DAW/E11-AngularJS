@@ -9,10 +9,18 @@
     <div ng-controller="PokedexController as pokeCtrl">
       <h1>COLTECdex</h1>
 
+      <h3>Pokemon Selecionado</h3>
+      <p><bold>Nome:</bold> {{pokeCtrl.pokemon.name}}</p>
+      <p><bold>Ataque:</bold> {{pokeCtrl.pokemon.attack}}</p>
+      <p><bold>Defesa:</bold> {{pokeCtrl.pokemon.defense}}</p>
+      <p><bold>HP:</bold> {{pokeCtrl.pokemon.hp}}</p>
+
       <table>
         <tr><td><b>Pokemon</b></td></tr>
         <tr ng-repeat="pokemon in pokeCtrl.pokemons">
-          <td>{{pokemon.name}}</td>
+          <td>
+            <a href="#" onclick="return false;" ng-click="pokeCtrl.pegarPokemon(pokemon.resource_uri)">{{pokemon.name}}</a>
+          </td>
         </tr>
       </table>
     </div>
