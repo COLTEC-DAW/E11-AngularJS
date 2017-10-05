@@ -8,12 +8,8 @@
     <script src="app.js"></script>
   </head>
   <body>
-    <div ng-controller="TemperaturaController as tempCtrl">
-
-      <h2>Conversor de temperatura</h2>
-      <p>Celsius: <input type="text" ng-model="tempCtrl.celsius" ng-change="tempCtrl.muda()"> </p>
-      <p>Kelvin: {{Kelvin}} </p>
-      <p>Fahrenheit: {{Fahrenheit}} </p>
+    <div ng-controller="LogCtrl as Log">
+        <button ng-click = "Log.funcao(0,Log.mensagem)"></button>
     </div>
   </body>
 </html>
