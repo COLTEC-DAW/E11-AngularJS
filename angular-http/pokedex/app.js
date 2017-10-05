@@ -8,8 +8,11 @@ app.factory('PokedexService', function($http){
   var pokedexService = {};
 
   pokedexService.getPokemons = function(callback) {
-    $http.get('http://pokeapi.co/api/v1/pokedex/1/').then(function(response) {
+    $http.get('https://pokeapi.co/api/v1/pokedex/1/').then(function(response) {
       var answer = response.data.pokemon;
+      response.data.pokemon.forEach(function(element) {
+        element.num = parseInt(element.resource_uri.split('/')[3]);
+      });
       callback(answer);
     },
     function(response) {

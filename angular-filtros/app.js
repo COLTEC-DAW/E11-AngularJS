@@ -112,4 +112,4 @@ app.controller('FuncionariosController', function() {
       saida += input[9];
       return saida;
     };
-})
+});

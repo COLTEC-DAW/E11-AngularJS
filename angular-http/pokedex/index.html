@@ -8,11 +8,26 @@
   <body ng-app="pokedex">
     <div ng-controller="PokedexController as pokeCtrl">
       <h1>COLTECdex</h1>
-
-      <table>
-        <tr><td><b>Pokemon</b></td></tr>
-        <tr ng-repeat="pokemon in pokeCtrl.pokemons">
-          <td>{{pokemon.name}}</td>
+      <p>Ordenar por:</p>
+      <form>
+        <input type="radio" ng-model="ordem" value="num" checked="checked"> Número
+        <br>
+        <input type="radio" ng-model="ordem" value="name"> Nome
+        <br>
+      </form>
+      <table border=1>
+        <tr>
+          <td><h2>Pokemon</h2></td>
+          <td><h2>N</h2></td>
+        </tr>
+        <tr ng-repeat="pokemon in pokeCtrl.pokemons | orderBy: ordem">
+          <td>
+            <h3>{{pokemon.name}}</h3>
+          </td>
+          <td>{{pokemon.num}}</td>
+          <td>
+            <button>Mais Informações</button>
+          </td>
         </tr>
       </table>
     </div>
