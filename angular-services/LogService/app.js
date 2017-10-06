@@ -13,8 +13,8 @@ var app = angular.module('myApp', []);
 });
 
 app.controller('LogCtrl', ["$scope", 'Logger', function($scope, Logger){
-    this.aviso = 0;
     this.mensagem = "";
+    this.erro = "";
 
     this.funcao = function(aviso, msg){
         Logger.logger(aviso, msg);

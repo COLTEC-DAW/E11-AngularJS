@@ -9,7 +9,14 @@
   </head>
   <body>
     <div ng-controller="LogCtrl as Log">
-        <button ng-click = "Log.funcao(0,Log.mensagem)"></button>
-    </div>
+      <form>
+        <input type="text" ng-model="Log.mensagem">
+        <button ng-click = "Log.funcao(0,Log.mensagem)">Mensagem</button>        
+      </form>
+      <form>
+        <input type="text" ng-model="Log.erro">
+        <button ng-click = "Log.funcao(1,Log.erro)">Erro</button>
+      </form>
+      </div>
   </body>
 </html>
