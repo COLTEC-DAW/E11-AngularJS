@@ -25,8 +25,9 @@
             <h3>{{pokemon.name}}</h3>
           </td>
           <td>{{pokemon.num}}</td>
+          <td>{{pokemon.type1}}/{{pokemon.type2}}</td>
           <td>
-            <button>Mais Informações</button>
+            <button ng-click="pokeCtrl.expandPoke(pokemon.num)">Mais Informações</button>
           </td>
         </tr>
       </table>
