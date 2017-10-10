@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Exercício Forms</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    <link rel="stylesheet" href="app.css">
+    <script src="app.js"></script>
+  </head>
+  <body ng-controller="FormController">
+    <h1>Exercício de Forms</h1>
+    <h3>Cadastro de Clientes</h3>
+    <form class="css-form" novalidate ng-submit="update(user)">
+      Nome: <input type="text" ng-model="user.nome"/><br/>
+      E-mail: <input type="email" ng-model="user.email"/><br/>
+      CPF: <input type="text" ng-model="user.cpf"/><br/>
+      Telefone: <input type="number" ng-model="user.telefone"/><br/>
+      Endereço: <input type="text" ng-model="user.endereco"/><br/>
+      <input type="submit" value="Cadastra"/>
+      <!--<input type="submit" value="Save" />-->
+      <div ng-repeat="c in master">
+        Nome: {{c.nome}}<br/>
+        E-mail: {{c.email}}<br/>
+        CPF: {{c.cpf}}<br/>
+        Telefone: {{c.telefone}}<br/>
+        Endereço: {{c.endereco}}<br/><br/>
+      </div>
+  </form>
+  </body>
+</html>
