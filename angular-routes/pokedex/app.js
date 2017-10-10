@@ -5,7 +5,14 @@ app.config(($routeProvider) => {
   $routeProvider
   .when("/",
     {
-      redirectTo: "pokedex"
+      redirectTo: "login"
+    }
+  )
+  .when("/login",
+    {
+      templateUrl: "login.html",
+      controller: "LoginController",
+      controllerAs: "loginCtrl"
     }
   )
   .when("/pokedex",
@@ -86,4 +93,14 @@ app.controller('PokemonController', ['PokedexService', '$routeParams', function(
         this.pokemon = answer;
       }
     });
+}]);
+
+app.controller('LoginController', ['$location', function($location) {
+  this.entrar = function(params) {
+    if(params.idade >= 18) {
+      $location.path('pokedex');
+    } else {
+      alert("De menor");
+    }
+  }
 }]);
