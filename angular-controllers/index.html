@@ -9,10 +9,60 @@
   </head>
   <body>
     <div ng-controller="TemperaturaController as tempCtrl">
-
       <h2>Conversor de temperatura</h2>
-      Celsius: <input type="text" ng-model="tempCtrl.celsius"> <br>
-      Kelvin: {{tempCtrl.celsiusToKelvin(tempCtrl.celsius)}} <br>
+      Celsius: <input type="text" ng-model="tempCtrl.celsius"> <br><br>
+      Kelvin: {{tempCtrl.celsiusToKelvin()}} <br>
+      Fahrenheit: {{tempCtrl.celsiusToFahrenheit()}} <br>
+    </div>
+
+
+    <div ng-controller="ImpostoController as impostoCtrl">
+      <h2>Calculadora de Imposto</h2>
+      Salário: <input type="number" ng-model="impostoCtrl.salario"> <br><br>
+      Imposto: {{impostoCtrl.roubar()}} <br>
+    </div>
+
+
+    <div ng-controller="ReviewController as controller">
+      <h2>Movie Rate</h2>
+      Comentario: <textarea ng-model="controller.comentario"></textarea> <br>
+      Estrelas: <input type="number" ng-model="controller.estrelas" min="1" max="5"> <br>
+      <button ng-click="controller.criarReview()">Enviar comentario</button>
+
+      <h4>Preview</h4>
+      <p>Estrelas: {{controller.estrelas}}</p>
+      <p>Comentário: {{controller.comentario}}</p>
+
+      <div ng-repeat="review in controller.reviews" style="border: 1px solid black; padding-left: 10px;">
+        <p>Stars: {{review.stars}}</p>
+        <p>Comment: {{review.comment}}</p>
+      </div>
+    </div>
+
+    <div ng-controller="ContactController as contact">
+      <h2>Agenda de Contatos</h2>
+      Nome: <input type="text" ng-model="contact.nome"></input> <br>
+      Telefone: <input type="number" ng-model="contact.telefone" min="111111111" max="999999999"> <br>
+      Email: <input type="email" ng-model="contact.email"> <br>
+      <button ng-if="!contact.editMode" ng-click="contact.criarContato()">Salvar contato</button> 
+      <button ng-if="contact.editMode" ng-click="contact.editarMesmoContato()">Editar contato</button> <br><br>
+
+      <table style="border: 1px solid black;">
+        <tr style="border: 1px solid black;">
+          <th style="border: 1px solid black;">Nome</th>
+          <th style="border: 1px solid black;">Telefone</th>
+          <th style="border: 1px solid black;">Email</th>
+        </tr>
+
+        <tr ng-repeat="contato in contact.contatos">
+          <td style="border: 1px solid black;">{{contato.nome}}</td>
+          <td style="border: 1px solid black;">{{contato.telefone}}</td>
+          <td style="border: 1px solid black;">{{contato.email}}</td>
+
+          <td><button ng-click="contact.editarContato($index)">Editar</button></
+          <td><button ng-click="contact.excluirContato($index)">Excluir</button></td>
+        </tr>
+      </table>
     </div>
   </body>
 </html>
