@@ -47,14 +47,14 @@ app.controller('FuncionariosController', function() {
     },
     {
       name: "Matheus",
-      cpf: 07689155189,
+      cpf: 17689155189,
       email: "matheus@m.com",
       phone: 5789550046,
       salary: 3700
     },
     {
       name: "Clara",
-      cpf: 06587921125,
+      cpf: 16587921125,
       email: "mariaclara@maria.com",
       phone: 3125168998,
       salary: 5800
@@ -68,4 +68,26 @@ app.controller('FuncionariosController', function() {
     }
   ];
 
-});
+}).filter("CPFfilter", function(){
+    return function(input) {
+        var str = input + '';
+        if(str.length <= 11){
+          str = str.replace(/\D/g, '');
+          str = str.replace(/(\d{3})(\d)/, "$1.$2");
+          str = str.replace(/(\d{3})(\d)/, "$1.$2");
+          str = str.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+        }
+        return str;
+      };
+  }).filter("PhoneFilter", function(){
+    return function(input) {
+        var str = input + '';
+        if(str.length <= 11){
+          str = str.replace(/\D/g, '');
+          str = str.replace(/(\d{0})(\d)/, "$1($2");
+          str = str.replace(/(\d{2})(\d)/, "$1)$2");
+          str = str.replace(/(\d{4})(\d)/, "$1-$2");
+        }
+        return str;
+      };
+  })
