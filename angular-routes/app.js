@@ -3,7 +3,12 @@ var app = angular.module("swapp", ["ngRoute"]);
 app.config(($routeProvider) => {
     $routeProvider
     .when("/",{
-        redirectTo: "home"
+        redirectTo: "/login"
+    })
+    .when("/login",{
+        templateUrl: "templates/login.html",
+        controller: "LoginController",
+        controllerAs: "loginCtrl"
     })
     .when("/home",{
         templateUrl: "templates/home.html",
@@ -84,6 +89,13 @@ app.factory("listaService", function(){
     return listaService;
 });
 //---------------------------------------------------------------------------------------------------------------------------------
+app.controller("LoginController", ["$location", function($location){
+    this.valida = function(idade){
+        if(idade >= 18) $location.path("home");
+        else alert("Menor de idade");
+    }
+}]);
+
 app.controller('listaController', ["$scope", "listaService", function($scope, listaService) {
 	console.log("CONTROLLER Lista");
 	this.lista = [];
