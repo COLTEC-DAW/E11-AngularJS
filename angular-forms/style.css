@@ -1,0 +1,7 @@
+.ng-valid{
+    border-color: greenyellow;
+}
+
+.ng-invalid{
+    border-color: red;
+}
