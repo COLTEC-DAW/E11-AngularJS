@@ -69,3 +69,35 @@ app.controller('FuncionariosController', function() {
   ];
 
 });
+
+app.filter('cpf', () => {
+  return (text) => {
+    let cpf = text.toString()
+    
+    // percebi que a linha acima retirava os zeros que estavam no inicio do cpf
+    // a função abaixo é pura e recursiva
+    // se o cpf tiver 11 caracteres, é pq ta OK, e então a string original é retornada
+    // senão, está faltando 0s no início
+    // então, ela chama ela mesma com a mesma string só que com um 0 no início
+    // e faz isso até que tenha 11 caracteres, então a string com zeros é retornada
+    // baseado no exemplo de fact funcional escrito aqui: https://github.com/haskellcamargo/js-real-world-functional-programming#do-1
+    const zerosNoInicio = CPF => CPF.length === 11
+      ? CPF
+      : zerosNoInicio(`0${CPF}`)
+
+    let cpfCorrigido = zerosNoInicio(cpf)
+
+    let cpfDividido = cpfCorrigido.match(/.{1,3}/g)
+    return `${cpfDividido[0]}.${cpfDividido[1]}.${cpfDividido[2]}-${cpfDividido[3]}`
+  }
+})
+
+app.filter('telefone', () => {
+  return (text) => {
+    let telefone = text.toString()
+    let codigoDeArea = telefone.substring(0, 2)
+    let antesDoTraco = telefone.substring(2, 6)
+    let depoisDoTraco = telefone.substring(6, 10)
+    return `(${codigoDeArea})${antesDoTraco}-${depoisDoTraco}`
+  }
+})

@@ -1,20 +1,10 @@
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', [])
 
-app.controller('TemperaturaController', function() {
+app.controller('TemperaturaController', function () {
+  this.celsius = 32.0
 
-  this.celsius = 32.0;
-
-  this.celsiusToKelvin = function(celsius) {
-    answer = parseInt(celsius) + 273.5;
-    if (isNaN(answer)) {
-      return 0;
-    } else {
-      return  answer;
-    }
-  };
-
-  this.celsiusToFahrenheit = (celsius) => {
-    answer = parseInt(celsius) * (9/5) + 32
+  this.celsiusToKelvin = function (celsius) {
+    answer = parseInt(celsius) + 273.5
     if (isNaN(answer)) {
       return 0
     } else {
@@ -22,32 +12,37 @@ app.controller('TemperaturaController', function() {
     }
   }
 
-});
+  this.celsiusToFahrenheit = (celsius) => {
+    answer = parseInt(celsius) * (9 / 5) + 32
+    if (isNaN(answer)) {
+      return 0
+    } else {
+      return answer
+    }
+  }
+})
 
-app.controller('RouboController', function() {
-
+app.controller('RouboController', function () {
   this.salario = 1000
 
   this.calculateTheft = (salario) => {
     if (isNaN(salario)) {
       return 0
     } else if (salario < 2000) {
-      return salario/10
+      return salario / 10
     } else if (salario < 3500) {
-      return salario/10 * 2
+      return salario / 10 * 2
     } else {
-      return salario/10 * 3 
+      return salario / 10 * 3
     }
   }
-
 })
 
-app.controller('ReviewController', function() {
-
+app.controller('ReviewController', function () {
   this.reviews = []
   this.review = {
     stars: 0,
-    comment: ""
+    comment: ''
   }
 
   this.addReview = (stars, comment) => {
@@ -57,23 +52,22 @@ app.controller('ReviewController', function() {
     }
     this.reviews.push(actualReview)
     this.review.stars = 0
-    this.review.comment = ""
+    this.review.comment = ''
   }
-
 })
 
-app.controller('ContactController', function() {
+app.controller('ContactController', function () {
   this.contacts = []
   this.contact = {
-    name: "",
-    phone: "",
-    email: ""
+    name: '',
+    phone: '',
+    email: ''
   }
-  this.btnMessage = "Add Contact"
+  this.btnMessage = 'Add Contact'
   this.editIndex = 0
 
   this.handleBtnClick = (name, phone, email) => {
-    if (this.btnMessage == "Add Contact") {
+    if (this.btnMessage == 'Add Contact') {
       let actualContact = {
         name,
         phone,
@@ -81,9 +75,9 @@ app.controller('ContactController', function() {
       }
 
       this.contacts.push(actualContact)
-      this.contact.name = ""
-      this.contact.phone = ""
-      this.contact.email = ""
+      this.contact.name = ''
+      this.contact.phone = ''
+      this.contact.email = ''
     } else {
       let actualContact = {
         name,
@@ -92,10 +86,10 @@ app.controller('ContactController', function() {
       }
 
       this.contacts[this.editIndex] = actualContact
-      this.contact.name = ""
-      this.contact.phone = ""
-      this.contact.email = ""
-      this.btnMessage = "Add Contact"
+      this.contact.name = ''
+      this.contact.phone = ''
+      this.contact.email = ''
+      this.btnMessage = 'Add Contact'
     }
   }
 
@@ -104,7 +98,7 @@ app.controller('ContactController', function() {
   }
 
   this.editContact = (index) => {
-    this.btnMessage = "Update Contact"
+    this.btnMessage = 'Update Contact'
     this.contact.name = this.contacts[index].name
     this.contact.phone = this.contacts[index].phone
     this.contact.email = this.contacts[index].email
