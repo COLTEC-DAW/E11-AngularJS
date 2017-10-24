@@ -1,25 +1,13 @@
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ["tempService"]);
 
-app.controller('TemperaturaController', function() {
+app.controller('TemperaturaController', ["$scope", "tempService", function($scope , tempService) {
+	console.log("CONTROLLER");
+  this.celsius = 0;
+	$scope.Kelvin = 0;
+	$scope.Fahrenheit=0;
 
-  this.celsius = 32.0;
-
-  this.celsiusToKelvin = function(celsius) {
-    answer = parseInt(celsius) + 273.5;
-    if (isNaN(answer)) {
-      return 0;
-    } else {
-      return  answer;
-    }
-  };
-
-  this.celsiusToFahrenheit = function(celsius) {
-    answer = parseInt(celsius) * 1.8 + 32;
-    if (isNaN(answer)) {
-      return 0;
-    } else {
-      return  answer;
-    }
-  };
-
-});
+	this.muda = function () {
+		$scope.Kelvin = tempService.celsiusToKelvin(this.celsius);
+		$scope.Fahrenheit = tempService.celsiusToFahrenheit(this.celsius);
+	};
+}]);

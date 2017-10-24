@@ -8,11 +8,61 @@
   <body ng-app="pokedex">
     <div ng-controller="PokedexController as pokeCtrl">
       <h1>COLTECdex</h1>
-
-      <table>
-        <tr><td><b>Pokemon</b></td></tr>
-        <tr ng-repeat="pokemon in pokeCtrl.pokemons">
-          <td>{{pokemon.name}}</td>
+      <p>Ordenar por:</p>
+      <form>
+        <input type="radio" ng-model="ordem" value="num" checked="checked"> Número
+        <br>
+        <input type="radio" ng-model="ordem" value="name"> Nome
+        <br>
+      </form>
+      <table border=1>
+        <tr>
+          <td><h1>Pokemon</h1></td>
+        </tr>
+        <tr ng-repeat="pokemon in pokeCtrl.pokemons | orderBy: ordem">
+          <td>
+            <table border=1 style="width: 100%">
+              <tr>
+                <td><h2>Nome</h2></td>
+                <td><h2>N</h2></td>
+                <td><h2>Tipos</h2></td>
+                <td><h2>Espécie</h2></td>
+              </tr>
+              <tr>
+                <td><h3>{{pokemon.name}}</h3></td>
+                <td>{{pokemon.num}}</td>
+                <td>{{pokemon.type1}} / {{pokemon.type2}}</td>
+                <td>{{pokemon.species}}</td>
+                <td>
+                  <button ng-click="pokeCtrl.expandPoke(pokemon.num)">Mais Informações</button>
+                </td>
+              </tr>
+              <tr ng-show="pokemon.hp != null">
+                <td><strong>HP</strong></td>
+                <td><strong>Attack</strong></td>
+                <td><strong>Defense</strong></td>
+                <td><strong>Sp. Attack</strong></td>
+                <td><strong>Sp. Defense</strong></td>
+                <td><strong>Speed</strong></td>
+              </tr>
+              <tr>
+                <td>{{pokemon.hp}}</td>
+                <td>{{pokemon.attack}}</td>
+                <td>{{pokemon.defense}}</td>
+                <td>{{pokemon.sp_atk}}</td>
+                <td>{{pokemon.sp_def}}</td>
+                <td>{{pokemon.speed}}</td>
+              </tr>
+              <tr>
+                <td><strong>Altura</strong></td>
+                <td><strong>Peso</strong></td>
+              </tr>
+              <tr>
+                <td>{{pokemon.height}} m</td>
+                <td>{{pokemon.weight}} kg</td>
+              </tr>
+            </table>
+          </td>
         </tr>
       </table>
     </div>

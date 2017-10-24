@@ -1,0 +1,18 @@
+<!DOCTYPE>
+<html ng-app>
+    <head>
+        <title>Conversor Celsius</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.0/angular.min.js"></script>
+    </head>
+    <body>
+        <div>
+            Celsius: <input type="number" min="0" ng-model="celsius">
+        </div>
+        <div>
+            Farenheit: {{celsius*1.8+32}}
+        </div>
+        <div>
+            Kelvin: {{celsius+273}}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE>
+<html ng-app>
+    <head>
+        <title>Calculadora de roubo</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.0/angular.min.js"></script>
+    </head>
+    <body>
+        <div>
+            Custo: <input type="number" ng-model="custo">
+            <button ng-click="cost = custo*1.15">CONFIRMAR</button>
+        </div>
+        <br>
+        <div>
+            <h2>Custo com imposto: {{::cost | currency}}</h2>
+            <button>Sonegar</button>
+        </div>
+    </body>
+</html>

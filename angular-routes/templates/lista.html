@@ -1,0 +1,28 @@
+<h2>{{listaCtrl.categoria}}</h2>
+<ul>
+    <li ng-repeat="item in listaCtrl.lista.results">
+        <div ng-show="listaCtrl.categoria == 'people'">
+            <a href="#!/someone/{{item.name}}{{item.title}}/{{listaCtrl.pag}}">{{item.name}}{{item.title}}</a>
+        </div>
+        <div ng-show="listaCtrl.categoria == 'species'">
+            <a href="#!/especie/{{item.name}}{{item.title}}">{{item.name}}{{item.title}}</a>
+        </div>
+        <div ng-show="listaCtrl.categoria == 'films'">
+            <a href="#!/filme/{{item.name}}{{item.title}}">{{item.name}}{{item.title}}</a>
+        </div>
+        <div ng-show="listaCtrl.categoria == 'planets'">
+            <a href="#!/planet/{{item.name}}{{item.title}}">{{item.name}}{{item.title}}</a>
+        </div>
+        <div ng-show="listaCtrl.categoria == 'vehicles'">
+            <a href="#!/vehicle/{{item.name}}{{item.title}}">{{item.name}}{{item.title}}</a>
+        </div>
+        <div ng-show="listaCtrl.categoria == 'starships'">
+            <a href="#!/starship/{{item.name}}{{item.title}}">{{item.name}}{{item.title}}</a>
+        </div>
+    </li>
+</ul>
+<a href="#!/home">Go Home</a>
+<br>
+<a ng-show="listaCtrl.antPag != null" href="#!/lista/{{listaCtrl.categoria}}/{{listaCtrl.pag - 1}}"><<<</a>
+{{listaCtrl.pag}}
+<a ng-show="listaCtrl.proxPag != null" href="#!/lista/{{listaCtrl.categoria}}/{{listaCtrl.proxPag}}">>>></a>

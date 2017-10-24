@@ -10,41 +10,58 @@
   </head>
   <body ng-app="FuncionariosApp" ng-controller="FuncionariosController as funcCtrl">
 
-    <input type="text" ng-model="searchInput">
+    <input type="text" ng-model="filtro" placeholder="Filtro">
+    <br>
+    <input type="number" ng-model="limite" placeholder="Limite">
+    <br>
+    <p>Ordenar por:</p>
+    <form>
+      <input type="radio" ng-model="ordem" value="name"> Nome
+      <br>
+      <input type="radio" ng-model="ordem" value="cpf"> CPF
+      <br>
+      <input type="radio" ng-model="ordem" value="email"> e-mail
+      <br>
+      <input type="radio" ng-model="ordem" value="phone"> Telefone
+      <br>
+      <input type="radio" ng-model="ordem" value="salary"> Salário
+      <br>
+    </form>
+    <br>
 
-    <table>
-      <th>
-        <td>
+    <table border="1">
+      <tr>
+        <th>
           <b>Nome</b>
-        </td>
-        <td>
+        </th>
+        <th>
           <b>CPF</b>
-        </td>
-        <td>
+        </th>
+        <th>
           <b>E-mail</b>
-        </td>
-        <td>
+        </th>
+        <th>
           <b>Telefone</b>
-        </td>
-        <td>
+        </th>
+        <th>
           <b>Salário</b>
-        </td>
-      </th>
-      <tr ng-repeat="employee in funcCtrl.employees">
+        </th>
+      </tr>
+      <tr ng-repeat="employee in funcCtrl.employees | orderBy: ordem | filter: filtro | limitTo: limite">
         <td>
           {{employee.name}}
         </td>
         <td>
-          {{employee.cpf}}
+          {{employee.cpf | CPFfilter}}
         </td>
         <td>
           {{employee.email}}
         </td>
         <td>
-          {{employee.phone}}
+          {{employee.phone | Phonefilter}}
         </td>
         <td>
-          {{employee.salary}}
+          {{employee.salary | currency}}
         </td>
       </tr>
     </table>

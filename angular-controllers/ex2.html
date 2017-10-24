@@ -8,11 +8,11 @@
     <script src="app.js"></script>
   </head>
   <body>
-    <div ng-controller="TemperaturaController as tempCtrl">
+    <div ng-controller="impostoController as impostoCtrl">
 
-      <h2>Conversor de temperatura</h2>
-      Celsius: <input type="text" ng-model="tempCtrl.celsius"> <br>
-      Kelvin: {{tempCtrl.celsiusToKelvin(tempCtrl.celsius)}} <br>
+      <h2>Calculadora de imposto</h2>
+      Salário: <input type="text" ng-model="impostoCtrl.salario"> <br>
+      Imposto: {{impostoCtrl.calculaImposto(impostoCtrl.salario) |currency}} <br>
     </div>
   </body>
 </html>
