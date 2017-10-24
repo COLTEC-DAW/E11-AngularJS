@@ -12,65 +12,40 @@ app.config(($routeProvider) => {
     })
     .when("/home",{
         templateUrl: "templates/home.html",
-        controller: "listaController",
+        controller: "LoginController", //Provavelmente desnecessário
         controllerAs: "loginCtrl"
     })
-    .when("/people",{
-        templateUrl: "templates/lista.html",
-        controller: "listaController",
-        controllerAs: "listaCtrl"
-    })
-    .when("/someone",{
+    .when("/lista/:tipo/:pag",{
+            templateUrl: "templates/lista.html",
+            controller: "listaController",
+            controllerAs: "listaCtrl"
+        })
+    .when("/someone/:nome/:pag",{
         templateUrl: "templates/someone.html",
         controller: "someoneController",
         controllerAs: "some1Ctrl"
     })
-    .when("/planets",{
-        templateUrl: "templates/lista.html",
-        controller: "listaController",
-        controllerAs: "listaCtrl"
-    })
-    .when("/aPlanet",{
+    .when("/aPlanet/:nome/:pag",{
         templateUrl: "templates/planet.html",
         controller: "planetController",
         controllerAs: "planetCtrl"
     })
-    .when("/films",{
-        templateUrl: "templates/lista.html",
-        controller: "listaController",
-        controllerAs: "listaCtrl"
-    })
-    .when("/aFilm",{
+    .when("/aFilm/:nome/:pag",{
         templateUrl: "templates/filme.html",
         controller: "filmeController",
         controllerAs: "filmeCtrl"
     })
-    .when("/species",{
-        templateUrl: "templates/lista.html",
-        controller: "listaController",
-        controllerAs: "listaCtrl"
-    })
-    .when("/aSpecies",{
+    .when("/aSpecies/:nome/:pag",{
         templateUrl: "templates/especie.html",
         controller: "especieController",
         controllerAs: "especieCtrl"
     })
-    .when("/vehicles",{
-        templateUrl: "templates/lista.html",
-        controller: "listaController",
-        controllerAs: "listaCtrl"
-    })
-    .when("/aVehicle",{
+    .when("/aVehicle/:nome/:pag",{
         templateUrl: "templates/vehicle.html",
         controller: "vehicleController",
         controllerAs: "vehicleCtrl"
     })
-    .when("/starships",{
-        templateUrl: "templates/lista.html",
-        controller: "listaController",
-        controllerAs: "listaCtrl"
-    })
-    .when("/aStarship",{
+    .when("/aStarship/:nome/:pag",{
         templateUrl: "templates/starship.html",
         controller: "starshipController",
         controllerAs: "starshipCtrl"
@@ -79,14 +54,22 @@ app.config(($routeProvider) => {
         templateUrl: "templates/404.html"
     });
 });
-//---------------------------------------------------------------------------------------------------------------------------------------------
-app.factory("listaService", function(){
-    var listaService = {};
-    listaService.lista = [],
-    listaService.novaLista = function(lista){
-        this.lista = lista;
-    }
-    return listaService;
+//-----------------------------------------------------------------------------------------------------------------------------------------
+app.factory('ListaService', function($http){
+
+  var listaService = {};
+
+  listaService.getPage = function(pag, categoria, callback) {
+    $http.get('https://swapi.co/api/'+categoria+'/?format=json&page='+pag).then(function(response) {
+      var answer = response.data;
+      callback(answer);
+    },
+    function(response) {
+      var answer = null;
+      callback(answer);
+    });
+  };
+  return listaService;
 });
 //---------------------------------------------------------------------------------------------------------------------------------
 app.controller("LoginController", ["$location", function($location){
@@ -96,58 +79,54 @@ app.controller("LoginController", ["$location", function($location){
     }
 }]);
 
-app.controller('listaController', ["$scope", "listaService", function($scope, listaService) {
+app.controller('listaController', ["$scope", "$routeParams", "$http", "ListaService", function($scope, $routeParams, $http, ListaService) {
 	console.log("CONTROLLER Lista");
-	this.lista = [];
-    var answer = undefined;
-	this.novaLista = function (categoria) {
-        for (i=1; answer !== null; i++){
-            console.log("PG "+i);
-            $http.get('https://swapi.co/api/'+categoria+'/?format=json&page='+i).then(function(response) {
-                answer = response.data.results;
-                answer.sort(function (a, b) {
-                    if (a.name > b.name) return 1;
-                    else if (a.name < b.name) return -1;
-                    else return 0;
-                });
-                callback(answer);
-            },
-            function(response) {
-                var answer = null;
-                callback(answer);
-            });
-            lista += answer;
+    var self = this;
+    this.categoria = $routeParams.tipo;
+    this.pag = $routeParams.pag;
+    this.lista = [];
+    var answer;
+    this.proxPag = null;
+    this.antPag = null;
+    console.log("Loading "+this.categoria);
+    ListaService.getPage(this.pag, this.categoria, function(answer){
+        console.log(answer);
+        if (answer !== null) {
+            self.lista = answer;
+            if (answer.next !== null) {
+                self.proxPag = parseInt(self.pag)+1;
+                console.log("PROX: "+self.proxPag);
+            }
+            else self.proxPag = null;
+            if (answer.previous !== null) {
+                self.antPag = parseInt(self.pag)-1;
+                console.log("ANT: "+self.antPag);
+            }
+            else self.antPag = null;
         }
-        console.log(lista);
-	};
+    })
 }])
 
 app.controller('someoneController', ["$scope", function($scope) {
-	console.log("CONTROLLER someone");
 	this.pessoa = [];
 }]);
 
 app.controller('planetController', ["$scope", function($scope) {
-	console.log("CONTROLLER planeta");
 	this.planeta = [];
 }]);
 
 app.controller('filmeController', ["$scope", function($scope) {
-	console.log("CONTROLLER filme");
 	this.film = [];
 }]);
 
 app.controller('especieController', ["$scope", function($scope) {
-	console.log("CONTROLLER especie");
 	this.species = [];
 }]);
 
 app.controller('vehicleController', ["$scope", function($scope) {
-	console.log("CONTROLLER veiculo");
 	this.vehicle = [];
 }]);
 
 app.controller('starshipController', ["$scope", function($scope) {
-	console.log("CONTROLLER starship");
 	this.starship = [];
 }]);
