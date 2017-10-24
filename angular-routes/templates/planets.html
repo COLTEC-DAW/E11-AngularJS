@@ -1,0 +1,8 @@
+<div>
+    <div ng-repeat="item in planets.info.results">
+            <p>{{item.name}}</p>
+    </div>    
+    <a ng-click="planets.pagina_anterior()">{{planets.prev}}</a>
+    <a ng-click="planets.proxima_pagina()">{{planets.next}}</a>
+    <a href="#/">Voltar ao menu inicial</a>        
+</div>
