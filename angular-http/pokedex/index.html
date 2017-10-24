@@ -9,10 +9,31 @@
     <div ng-controller="PokedexController as pokeCtrl">
       <h1>COLTECdex</h1>
 
-      <table>
-        <tr><td><b>Pokemon</b></td></tr>
-        <tr ng-repeat="pokemon in pokeCtrl.pokemons">
-          <td>{{pokemon.name}}</td>
+      <table border="1">
+          <tr><td><b>Pokemon Escolhido</b></td></tr>
+          <tr>
+            <td>
+                <p>Nome: {{pokeCtrl.pokemon_atual.nome}}</p>
+                <p>Número: {{pokeCtrl.pokemon_atual.numero}}</p>
+                <p>Atk: {{pokeCtrl.pokemon_atual.ataque}}</p>
+                <p>Def: {{pokeCtrl.pokemon_atual.defense}}</p>
+                <p>HP: {{pokeCtrl.pokemon_atual.hp}}</p>
+                <p>Sp_atk: {{pokeCtrl.pokemon_atual.sp_atk}}</p>
+                <p>Sp_def: {{pokeCtrl.pokemon_atual.sp_def}}</p>
+                
+            </td>
+          </tr>
+        </table>
+  
+
+      <table border="1">
+        <tr><td><b>Todos os pokemons</b></td></tr>
+        <tr ng-repeat="pokemon in pokeCtrl.pokemons | orderBy: 'number'">
+          <td>
+              <p>Nome: {{pokemon.name}}</p>
+              <p>Número: {{pokemon.number}}</p>
+              <button ng-click="pokeCtrl.info(pokemon.number)">Mais informações</button>
+          </td>
         </tr>
       </table>
     </div>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Exercícios: Forms</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    
+  </head>
+  <body ng-app="ClientesApp" ng-controller="ClientesController as cliCtrl">
+    <div class="container">
+      <h1>Cadastro de Clientes</h1>
+      <form>
+        <div class="form-group">
+          <input type="text"  ng-model="cliCtrl.nome" id="nome" placeholder="Nome" required>
+        </div>
+   
+        <div class="form-group">
+          <input type="text"  ng-model="cliCtrl.email" id="email" placeholder="E-mail" required>
+        </div>
+
+        <div class="form-group">
+          <input type="text"  ng-model="cliCtrl.CPF" id="cpf" placeholder="CPF" required valida-cpf>
+        </div>
+
+        <div class="form-group">
+          <input type="text"  ng-model="cliCtrl.telefone" id="telefone" placeholder="Telefone" required>
+        </div>
+
+        <div class="form-group">
+          <input type="text"  ng-model="cliCtrl.endereco" id="endereco" placeholder="Endereço" required>
+        </div>
+        
+        <button type="submit" class="btn btn-success">Submit</button>
+   
+      </form>
+  </div>
+  </body>
+</html>

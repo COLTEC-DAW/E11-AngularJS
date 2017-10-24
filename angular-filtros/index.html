@@ -10,10 +10,29 @@
   </head>
   <body ng-app="FuncionariosApp" ng-controller="FuncionariosController as funcCtrl">
 
-    <input type="text" ng-model="searchInput">
+    <p style="padding:10px">
+      <input type="radio" ng-model="ordem" value="name"> Nome
+    </p>
+    <p style="padding:10px">
+        <input type="radio" ng-model="ordem" value="cpf"> CPF
+    </p>
+    <p style="padding:10px">
+        <input type="radio" ng-model="ordem" value="email"> E-mail
+    </p>
+    <p style="padding:10px">
+        <input type="radio" ng-model="ordem" value="phone"> Telefone
+    </p>
+    <p style="padding:10px">
+        <input type="radio" ng-model="ordem" value="salary"> Salário
+    </p>
+  
 
-    <table>
-      <th>
+    <p>
+      <input type="text" ng-model="filtro" placeholder="Filtro">        
+    </p>
+ 
+    <table border="1">
+      <tr>
         <td>
           <b>Nome</b>
         </td>
@@ -29,22 +48,22 @@
         <td>
           <b>Salário</b>
         </td>
-      </th>
-      <tr ng-repeat="employee in funcCtrl.employees">
+    </tr>
+      <tr ng-repeat="employee in funcCtrl.employees | orderBy: ordem | filter: filtro">
         <td>
           {{employee.name}}
         </td>
         <td>
-          {{employee.cpf}}
+          {{employee.cpf | CPFfilter}}
         </td>
         <td>
           {{employee.email}}
         </td>
         <td>
-          {{employee.phone}}
+          {{employee.phone | PhoneFilter}}
         </td>
         <td>
-          {{employee.salary}}
+          {{employee.salary | currency}}
         </td>
       </tr>
     </table>

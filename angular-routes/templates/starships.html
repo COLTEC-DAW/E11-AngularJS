@@ -1,0 +1,8 @@
+<div>
+    <div ng-repeat="item in starships.info.results">
+            <p>{{item.name}}</p>
+    </div>    
+    <a ng-click="starships.pagina_anterior()">{{starships.prev}}</a>
+    <a ng-click="starships.proxima_pagina()">{{starships.next}}</a>
+    <a href="#/">Voltar ao menu inicial</a>        
+</div>

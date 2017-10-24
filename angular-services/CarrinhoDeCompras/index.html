@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Exercício AngularJS: Services</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <div ng-controller="ComprasController as Ctrl1">
+        <h2>Produtos disponíveis</h2>
+        <div ng-repeat="item in listaItens">
+            {{item.descricao}} - {{item.preco | currency}} - <button ng-click="Ctrl1.adicionaItem(item)">Adicionar no carrinho</button>
+        </div>
+    </div>
+    <div ng-controller="CheckoutController as Ctrl2">
+        <h2>Seus produtos</h2>
+        <div ng-repeat="item in Ctrl2.mostra | orderBy: '-preco'">
+            {{item.descricao}} - {{item.preco | currency}} - {{item.quantidade}}
+        </div>
+        <div>
+            TOTAL: {{total() | currency}}
+        </div>
+    </div>
+  </body>
+</html>
