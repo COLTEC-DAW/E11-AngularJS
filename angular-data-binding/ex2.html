@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+	<title>Exercicios Data-Binding</title>
+</head>
+<body>
+
+	<div>
+		<h2>Exercicio 2</h2>
+		<h4>US$: <input type="number" ng-model="din"></h4>
+		<h4>R$: {{din * 4.10 | number: 1}}</h4>
+		<h4>€: {{din * 0.9 | number: 1}}</h4>
+	</div>
+</body>
+</html>
