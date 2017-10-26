@@ -42,7 +42,6 @@ app.controller('PokedexController', ['PokedexService', function(pokedexService){
     if (answer !== null) {
       self.pokemons = answer;
     }
-    console.log(self.pokemons);
   });
 
   this.getDescription = function(id){
@@ -50,7 +49,6 @@ app.controller('PokedexController', ['PokedexService', function(pokedexService){
       if (answer !== null) {
         self.singlePokemon = answer;
       }
-      console.log(self.singlePokemon);
     });
   }
 }]);
