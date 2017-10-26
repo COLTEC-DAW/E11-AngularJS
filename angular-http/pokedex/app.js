@@ -1,4 +1,3 @@
-
 var app = angular.module('pokedex', [])
 
 app.factory('PokedexService', function ($http) {
