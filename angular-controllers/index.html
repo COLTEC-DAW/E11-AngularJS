@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
   <head>
+      <style>
+          table, th, td {
+              border: 1px solid black;
+              border-collapse: collapse;
+          }
+          th, td {
+              padding: 5px;
+              text-align: left;
+          }
+      </style>
     <meta charset="utf-8">
     <title>Exercício AngularJS: Controllers</title>
 
@@ -31,7 +41,34 @@
 
       <h3>Reviews:</h3>
       <div ng-repeat= "rev in reviews" style="border: 1px solid black; padding-left: 10px;">Comentário: {{rev.comment}} <br>
-      Estrelas: {{rev.nota}}
+        Estrelas: {{rev.nota}}
+      </div>
+    </div>
+    <div ng-controller="contactController">
+      <h2>Agenda Telefonica</h2>
+      <h5>Para editar um contato use o formulário abaixo também</h5>
+      Nome: <input type="text" ng-model="nome"> <br>
+      Telefone: <input type="number" ng-model="telefone"> <br>
+      E-Mail: <input type="text" ng-model="email"> <br>
+      <button ng-click="adicionaContatos()">Adicionar Contato</button>
+
+      <h3>Contatos</h3>
+      <table style="width:100%">
+        <tr>
+          <th>Nome</th>
+          <th>Telefone</th>
+          <th>E-mail</th>
+          <tr ng-repeat="cont in contacts"> 
+            <button>Edita Contato</button>
+            <button>Remove Contato</button>
+            <td>{{cont.nome}}</td>
+            <td>{{cont.telefone}}</td>
+            <td>{{cont.email}}</td>
+            <td><button ng-click="editaContato($index)">Editar Contato</button></td>
+            <td><button ng-click="removeContato($index)">Remover Contato</button></td>
+          </tr>
+        </tr>
+      </table>
 
       </div>
     </div>
