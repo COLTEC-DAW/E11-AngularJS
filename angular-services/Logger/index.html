@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Exercício AngularJS: Services</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <div ng-controller="LogController">
+
+      <h2>Conversor de temperatura</h2>
+      Mensagem: <input type="text" ng-model="msg"> <br>
+      Nível: <input type="number" ng-model="nivel" min="0" max="1"> <br>
+      <button ng-click="adiciona()">Adiciona Log</button>
+    </div>
+  </body>
+</html>
