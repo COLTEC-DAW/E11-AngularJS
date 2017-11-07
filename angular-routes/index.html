@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Rotas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    -->
+    <script data-require="angular.js@1.4.6" data-semver="1.4.6" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.min.js"></script>
+    <script data-require="angular-route@1.4.0" data-semver="1.4.0" src="https://code.angularjs.org/1.4.0/angular-route.js"></script>
+
+    <script src="angular-route.js"></script>
+  </head>
+  <body ng-app="myApp">
+    <nav class="navbar navbar-default navbar-inverse">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li><a href="#/">Home</a></li>
+          <li><a href="#/about">Sobre</a></li>
+          <li><a href="#/contact">Contato</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <ng-view>
+      </ng-view>
+    </div>
+  </body>
+</html>
