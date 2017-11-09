@@ -3,6 +3,14 @@ var app = angular.module('myApp', ['ngRoute']);
 app.config(function($routeProvider){
   $routeProvider.when("/",
     {
+      templateUrl: "templates/login.html",
+      controller: "LoginController",
+      controllerAs: "logCtrl"
+    }
+
+  )
+  .when("/home",
+    {
       templateUrl: "templates/home.html",
       controller: "HomeController",
       controllerAs: "homeCtrl"
@@ -59,3 +67,14 @@ app.controller("AboutController", function(){
   this.aboutTitle = "Sobre";
   this.aboutMsg = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 });
+
+app.controller("LoginController", ['$location', function($location){
+  this.verifica = function(idade){
+    if(idade >= 18){
+      $location.path("/home");
+    }
+    else{
+      alert("Alerta! Pessoa menor de idade detectada!");
+    }
+  }
+}]);
