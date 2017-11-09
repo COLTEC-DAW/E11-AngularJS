@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+        <style>
+                table, th, td {
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                }
+                th, td {
+                    padding: 5px;
+                    text-align: left;
+                }
+        </style>
+    <meta charset="utf-8">
+    <title>Exercício AngularJS: Services</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <div ng-controller="comprasController">
+      <h2>Adicionar Itens ao carrinho</h2>
+      Descrição: <input type="text" ng-model="descricao"> <br>
+      Preço: <input type="number" ng-model="preco"> <br>
+      Quantidade: <input type="number" ng-model="qtd"> <br>
+      <button ng-click="adiciona()">Adiciona Item</button> <br>
+    </div>
+      <div ng-controller="CheckoutController">
+      <h2>Carrinho:</h2>
+      <table style="width:100%">
+              <tr>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+                <th>Total</th>
+                <tr ng-repeat="itens in itens"> 
+                  <td> {{itens.descricao}}</td>
+                  <td>R$ {{itens.preco}}</td>
+                  <td>{{itens.qtd}}</td>
+                  <td>R$ {{itens.qtd * itens.preco}}</td>
+                </tr>
+              </tr>
+            </table>
+            Total: R$ {{carrinho.total}}
+        </div>
+  </body>
+</html>

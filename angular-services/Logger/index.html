@@ -8,12 +8,12 @@
     <script src="app.js"></script>
   </head>
   <body>
-    <div ng-controller="TemperaturaController">
+    <div ng-controller="LogController">
 
-      <h2>Conversor de temperatura</h2>
-      Celsius: <input type="text" ng-model="celsius" ng-change="calcula()"> <br>
-      Kelvin: {{celsiusToKelvin}} <br>
-      Fahrenheit: {{celsiusToFahrenheit}} <br>
+      <h2>Logger</h2>
+      Mensagem: <input type="text" ng-model="msg"> <br>
+      Nível: <input type="number" ng-model="nivel" min="0" max="1"> <br>
+      <button ng-click="adiciona()">Adiciona Log</button>
     </div>
   </body>
 </html>

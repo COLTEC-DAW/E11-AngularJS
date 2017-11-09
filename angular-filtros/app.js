@@ -69,3 +69,24 @@ app.controller('FuncionariosController', function() {
   ];
 
 });
+
+app.filter('cpf', function(){
+  return function(text){
+    var cpf = text.toString();
+    cpf = cpf.replace(/\D/g,"");                    
+    cpf = cpf.replace(/(\d{3})(\d)/,"$1.$2");       
+    cpf = cpf.replace(/(\d{3})(\d)/,"$1.$2");       
+    cpf = cpf.replace(/(\d{3})(\d{1,2})$/,"$1-$2"); 
+    return cpf;
+  }
+});
+
+app.filter('telefone',function(){
+  return function(text){
+    var telefone = text.toString();
+    telefone=telefone.replace(/\D/g,"")                 //Remove tudo o que não é dígito
+    telefone=telefone.replace(/^(\d\d)(\d)/g,"($1) $2") //Coloca parênteses em volta dos dois primeiros dígitos
+    telefone=telefone.replace(/(\d{4})(\d)/,"$1-$2")    //Coloca hífen entre o quarto e o quinto dígitos
+    return telefone
+  }
+});
