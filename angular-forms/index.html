@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercícios: Forms</title>
+    <link rel="stylesheet" href="app.css">
+    <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </head>
+
+  <body ng-app="ClientesApp" ng-controller="CadastroController">
+    <h1>Cadastro de Clientes</h1>
+
+    <form novalidate ng-submit=submit(user)>
+        Nome: <input type="text" ng-model="user.nome"> <br> 
+        Email: <input type="email" ng-model="user.email" ><br> 
+        CPF: <input type="number" ng-model="user.cpf" cpf> <br> 
+        Celular: <input type="number" ng-model="user.telefone"> <br> 
+        Endereco: <input type="text" ng-model="user.endereco"> <br> 
+        <input type="submit" name="Enivar">
+    </form>
+  </body>
+</html>
