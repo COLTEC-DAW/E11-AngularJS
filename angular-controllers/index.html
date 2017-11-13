@@ -45,16 +45,23 @@
     <div ng-controller="ContactController">
       <h2>Lista de Contactos</h2>
       Nome: <input type="text" ng-model="contact.nome"><br>
-      Telefone: <input type="number" ng-model="contact.telefone" ><br>
+      Telefone: <input type="text" ng-model="contact.telefone" ><br>
       E-mail: <input type="text" ng-model="contact.email">
-      <button ng-click="addContact(contact, contactList)">Adicionar contacto</button>
+      <button ng-click="saveContact()">{{ textoBotao }}</button>
 
       <table border="1">
+        <tr>
+          <td>Nome</td>
+          <td>Telefone</td>
+          <td>Email</td>
+        </tr>
         <tr ng-repeat="x in contactList" style="border-style: inset">
           <td>{{ x.nome }}</td>
           <td>{{ x.telefone }}</td>
           <td>{{ x.email }}</td>
-          </tr>
+          <td style="border: 0px"><button ng-click="editContact(x)">Editar contacto</button></td>
+          <td style="border: 0px"><button ng-click="removeContact(x)">Apagar contacto</button></td>  
+        </tr>
         </table>
     </div>
   </body>

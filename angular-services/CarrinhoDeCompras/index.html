@@ -8,6 +8,37 @@
     <script src="app.js"></script>
   </head>
   <body>
-    <div ng-controller=""></div>
+    <h1>Lojinha do Zeca Urubu</h1>
+    <h3>Nosso desconto é a sua maior vigarice</h3>
+    
+    <div ng-controller="ComprasController">
+
+      <h3>Adicionar item ao carrinho</h3>
+      Descrição: <input type="text" ng-model="item.descricao">
+      Preço: <input type="number" ng-model="item.preco">
+      Quantidade: <input type="number" ng-model="item.quantidade">
+      <button ng-click="adicionaItem()">Adicionar item ao carrinho</button>
+    
+    </div>
+
+    <div ng-controller="CheckoutController">
+      
+      <b>Preço total: {{ calculaTotal() }}</b>
+
+      <h4>Lista de Compras<h4>
+      <table border="1">
+        <tr>
+          <td>Descrição</td>
+          <td>Preço</td>
+          <td>Quantidade</td>
+        </tr>
+        <tr ng-repeat="x in carrinho.listaCompras" style="border-style: inset">
+          <td>{{ x.descricao }}</td>
+          <td>{{ x.preco }}</td>
+          <td>{{ x.quantidade }}</td>
+        </tr>
+      </table>
+
+    </div>
   </body>
 </html>

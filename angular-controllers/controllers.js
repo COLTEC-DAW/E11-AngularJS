@@ -59,12 +59,28 @@ app.controller('ContactController', ['$scope', function($scope){
   }
   $scope.contactList = [];
 
-  $scope.addContact = function(contact, contactList){
-    $scope.contactList.push($scope.contact);
+  $scope.i = null;
+  $scope.textoBotao = "Adicionar contacto";
+
+  $scope.saveContact = function(){
+    if($scope.textoBotao == "Adicionar contacto") $scope.contactList.push($scope.contact);
+    else{
+     $scope.textoBotao = "Adicionar contacto";
+    }
     $scope.contact = {
       nome : null,
       telefone : null,
       email : null
     }
+  }
+
+  $scope.editContact = function(x){
+    $scope.textoBotao = "Salvar edição";
+    $scope.contact = x;
+    $scope.i = contactList.indexOf($scope.contact);
+  }
+
+  $scope.removeContact = function(x){
+    $scope.contactList.splice(x, 1);
   }
 }]);
