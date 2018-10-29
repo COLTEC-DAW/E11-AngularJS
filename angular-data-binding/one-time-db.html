@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+  <meta charset="utf-8">
+  <title>Exercicio 04 - Angular</title>
+</head>
+
+<body>
+
+  <h1> One-time data binding  </h1>
+
+  <h3> Escolha sua arma durante o governo do bosonora </h3>
+
+  <fieldset class="armas" style="width: 50%">
+    <input type="radio" name="weapons" ng-model="weapon" value="Glock calibre 44" >Glock calibre 44
+    <input type="radio" name="weapons" ng-model="weapon" value="Vento estocado pela dilma" >Vento estocado pela dilma
+    <input type="radio" name="weapons" ng-model="weapon" value="Memes da sam" >Memes da sam
+    <input type="radio" name="weapons" ng-model="weapon" value="xxxtentação" >xxxtentação
+    <input type="radio" name="weapons" ng-model="weapon" value="Facas" >Facas
+  </fieldset>
+
+  <p>Não vale mudar! Você só tem uma chance de escolher o melhor para sua segurança</p>
+
+  <h2> Você vai se defender com: {{ ::weapon }} </h2>
+
+</body>
+</html>
