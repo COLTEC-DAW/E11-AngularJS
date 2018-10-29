@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+  <meta charset="utf-8">
+  <title>Exercicio 03 - Angular</title>
+</head>
+
+<body>
+
+  <h1> Review do produto </h1>
+
+  <h3> Classificação </h3>
+
+  <div class="classificacao">
+    <input type="radio" name="stars" ng-model="class" value="1" >1
+    <input type="radio" name="stars" ng-model="class" value="2" >2
+    <input type="radio" name="stars" ng-model="class" value="3" >3
+    <input type="radio" name="stars" ng-model="class" value="4" >4
+    <input type="radio" name="stars" ng-model="class" value="5" >5
+  </div>
+
+  <h3> Comentários </h3>
+  <textarea ng-model="comment" cols="35" rows="8"></textarea>
+
+  <hr>
+
+  <h2> Preview da review </h2>
+
+  <p>Classificação: {{ class }}/5</p>
+  <p>Comentários: {{ comment }}</p>
+
+</body>
+</html>
