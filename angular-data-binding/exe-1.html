@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <meta charset="UTF-8">
+    <title>1 Date Binding</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+</head>
+<body>
+    <p>Digite a temperatura em Celsius: <input type="number" ng-model="temp"> </p>
+   
+    <p>Kelvin {{temp + 273}}K </p>
+    <p>Temperatura em Fahrenheit {{ (temp*9)/5 +32 }}°F</p>
+</body>
+</html>

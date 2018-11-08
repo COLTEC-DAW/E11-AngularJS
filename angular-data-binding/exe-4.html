@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <meta charset="UTF-8">
+    <title>2 Date Binding</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+</head>
+<body>
+        <h1>Carrinho de compra</h1>
+        <input type="number" ng-init="cost=100" ng-model="cost">
+        <p> Custo: R$ {{ cost * 4.9 * 1.17 }}</p>
+        <p> Custo Inicial: R$ {{ ::cost * 4.9 * 1.17 }}</p>
+</body>
+</html>
+</html>
