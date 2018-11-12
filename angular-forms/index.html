@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Forms</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script> 
+    <script src="app.js"></script>
+
+    <style>
+        .ng-dirty.ng-valid{
+            border-color: lightgreen;
+        }
+        .ng-dirty.ng-invalid{
+            border-color: lightcoral;
+        }
+    </style>
+</head>
+<body ng-app="ClientesApp">
+    <form action="index.html">
+        <h2>Cadastrar novo cliente</h2>
+        Nome:  <input type="text" ng-model="client.name"/><br>
+        E-mail: <input type="email" ng-model="client.email"/><br>
+        CPF: <input type="number" ng-model="client.cpf" cpf-validator/><br>
+        Telefone: <input type="text" ng-model="client.phone"/><br>
+        Endereço: <input type="text" ng-model="client.address"/><br>
+        <input type="submit" value="Cadastrar" />
+    </form>
+</body>
+</html>
