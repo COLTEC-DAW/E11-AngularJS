@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+ <html ng-app>
+ <head>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+     <meta charset="utf-8">
+     <title>Ex 1</title>
+ </head>
+ 
+ <body>
+     <p>Temp Celsius: <input type= " number " ng-model= " tempcelsius "></p>
+     <h1> Kelvin {{tempcelsius + 273}} °K </h1>
+     <h1> Fahrenheit {{ (((tempcelsius * 9) / 5) + 32) }} °F </h1>
+ </body>
+ </html> 

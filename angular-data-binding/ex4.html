@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+ <html ng-app>
+ <head>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+     <meta charset="utf-8">
+     <title>Ex 4</title>
+ </head>
+ 
+ <body>
+     <h1>Carrinho :D</h1>
+     <input type="number" ng-init="cost=29.99" ng-model="cost">
+     <p> $$$:  {{ cost * 12 * 3 }}</p>
+     <p> pre-$$$: R$ {{ ::cost * 3 * 12 }}</p>
+ </body>
+ </html> 
