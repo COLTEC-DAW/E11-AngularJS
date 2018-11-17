@@ -2,49 +2,52 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Exercícios: Filtros</title>
+    <title>Filtros</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.min.js"></script>
     <script src="app.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </head>
   <body ng-app="FuncionariosApp" ng-controller="FuncionariosController as funcCtrl">
-
+  <br>
+  <br>
     <input type="text" ng-model="searchInput">
-
+    <input type="number" ng-model="limitador">
+    <br>
+    <br>
     <table>
-      <th>
-        <td>
+      <tr>
+        <th>
           <b>Nome</b>
-        </td>
-        <td>
+        </th>
+        <th>
           <b>CPF</b>
-        </td>
-        <td>
+        </th>
+        <th>
           <b>E-mail</b>
-        </td>
-        <td>
+        </th>
+        <th>
           <b>Telefone</b>
-        </td>
-        <td>
+        </th>
+        <th>
           <b>Salário</b>
-        </td>
-      </th>
-      <tr ng-repeat="employee in funcCtrl.employees">
-        <td>
+        </th>
+      </tr>
+      <tr ng-repeat="employee in funcCtrl.employees | filter: searchInput | orderBy: 'name' | limitTo: limitador">
+        <td style="padding: 5px;">
           {{employee.name}}
         </td>
-        <td>
-          {{employee.cpf}}
+        <td style="padding: 5px;">
+          {{employee.cpf | cpf}}
         </td>
-        <td>
+        <td style="padding: 5px;">
           {{employee.email}}
         </td>
-        <td>
-          {{employee.phone}}
+        <td style="padding: 5px;">
+          {{employee.phone | telefone}}
         </td>
-        <td>
-          {{employee.salary}}
+        <td style="padding: 5px;">
+          {{employee.salary | currency:'R$'}}
         </td>
       </tr>
     </table>

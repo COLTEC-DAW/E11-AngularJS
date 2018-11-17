@@ -1,0 +1,8 @@
+<table>
+	<tr><td><b>Pokemon</b></td></tr>
+	<tr ng-repeat="pokemon in pokeCtrl.pokemons">
+	  <td>
+	    <a href="#/pokemon/{{pokemon.resource_uri.split('/')[3]}}">{{pokemon.name}}</a>
+	  </td>
+	</tr>
+</table>

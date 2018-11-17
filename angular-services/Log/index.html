@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Exercício AngularJS: Services</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <div ng-controller="LogController as log">
+
+      <h2>Logradouro</h2>
+      <form>
+        Nível: <label><input type="radio" value="0" ng-model="log.nivel"> Alerta</label>
+               <label><input type="radio" value="1" ng-model="log.nivel"> Erro</label>
+        <br>
+        Mensagem: <input type="text" ng-model="log.msg"> <br>
+        
+        <input type="submit" value="Logar" ng-click="log.adicionarLog()"></input>
+      </form>
+    </div>
+  </body>
+</html>
