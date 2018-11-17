@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app>
+	<head>
+        <script 				
+        src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+		<meta charset="utf-8">
+	</head>
+ 	<body>
+		<h1>Estrelas: <select name="nota" ng-model="nota">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select></h1>
+		<h1>Comentário: <textarea type="text" ng-model="comen"></textarea>
+		<h1>Nota: {{nota}}</h1>
+		<h1>Preview: {{comen}} </h1>
+     </body>
+ </html>

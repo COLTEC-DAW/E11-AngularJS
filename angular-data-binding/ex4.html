@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html ng-app>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    </head>
+    <body>
+        <select name="jogador" ng-model="melhor">
+            <option value="messi">messi</option>
+            <option value="cr7">cr7</option>
+            <option value="neymar">neymar</option>
+        </select>
+        <h1>O melhor é: {{::melhor}}</h1>
+    </body>
+</html> 
