@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+        <script src="app2.js"></script>
+    </head>
+    <body>
+        <div ng-controller="reviewController">
+            <div>
+                <h1>Review</h1>
+                <textarea ng-model="reviewL"></textarea><br>
+                <h1>Estrelas: <select name="nota" ng-model="estrelasL">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                </select></h1>
+                <button ng-click="add(reviewL, estrelasL)">Submit</button>
+                 <h1>Preview</h1>
+                <textarea > {{reviewL}} </textarea><br>
+                Nota: {{estrelasL}} estrela(s).
+            </div>
+            <div>
+                <h2>Reviews</h2>
+                <div ng-repeat="r in reviews">
+                    <textarea >{{r.review}}</textarea><br>
+                    <b>{{r.estrela}} estrelas</b>
+                </div>
+            </div>
+        </div>
+    </body>
+</html> 

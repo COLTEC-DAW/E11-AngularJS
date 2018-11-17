@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+        <script src="app3.js"></script>
+    </head>
+    <body>
+        <div ng-controller="ContactController">
+            <div>
+                <h1>Adicionar contato</h1>
+                Nome: <input type="text" ng-model="nome"><br>
+                Telefone: <input type="text" ng-model="telefone"><br>
+                Email: <input type="email" ng-model="email"><br>
+                <button ng-click="add(nome, telefone, email)">Submit</button>
+            </div>
+            <div>
+                <h1>Editar/Deletar</h1>
+                Linha: <input required="required" type="number" min="1" ng-model="linha"><br>
+                Nome: <input type="text" ng-model="nomeEd"><br>
+                Telefone: <input type="text" ng-model="telefoneEd"><br>
+                Email: <input type="email" ng-model="emailEd"><br>
+                <button ng-click="edt(linha, nomeEd, telefoneEd, emailEd)">Editar</button>
+                <button ng-click="del(linha)">Deletar</button>
+            </div>
+            <div>
+                <h1>Contatos salvos</h1>
+                <table>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>Email</th>                        
+                    </tr>
+                    <tr ng-repeat="c in contacts">
+                        <td>{{c.nome}}</td>
+                        <td>{{c.telefone}}</td>
+                        <td>{{c.email}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html> 
