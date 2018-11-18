@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+
+    <input type="range" min="1" max="10" ng-model="nota">
+    <span>{{nota}}</span> </br>
+    <textarea  type="text" placeholder="comentario" ng-model="comentario"></textarea><br>
+
+    <h2>Preview</h2>
+    <p> Nota: {{avaliacao}} </p>
+    <p> Comentário: {{comentario}} </p>
+
+</body>
+</html>

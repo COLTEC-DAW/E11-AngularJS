@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+    <h1>Nota na prova</h1>
+    <input type="number" ng-init="nota=4.8" ng-model="nota">
+
+    <p> nota: R$ {{ nota/8 * 100 }}%</p>
+    <p> Média: R$ {{ ::nota/8 *100 }}%</p>
+
+
+</body>
+</html>
