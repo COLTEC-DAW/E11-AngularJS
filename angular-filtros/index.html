@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>Exercícios: Filtros</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.min.js"></script>
     <script src="app.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
@@ -30,21 +28,21 @@
           <b>Salário</b>
         </td>
       </th>
-      <tr ng-repeat="employee in funcCtrl.employees">
+      <tr ng-repeat="employee in funcCtrl.employees  | filter: searchInput |  orderBy: 'name' | limitTo: limit" >
         <td>
           {{employee.name}}
         </td>
         <td>
-          {{employee.cpf}}
+          {{employee.cpf | cpff}}
         </td>
         <td>
           {{employee.email}}
         </td>
         <td>
-          {{employee.phone}}
+          {{employee.phone | phonef}}
         </td>
         <td>
-          {{employee.salary}}
+          R{{employee.salary | currency}}
         </td>
       </tr>
     </table>
