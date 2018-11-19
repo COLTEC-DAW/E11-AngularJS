@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -7,47 +6,69 @@
     <script src="app.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <style>
+      td, th{
+        padding-right: 10px !important;
+        text-align: center;
+      }
+    </style>
   </head>
   <body ng-app="FuncionariosApp" ng-controller="FuncionariosController as funcCtrl">
 
-    <input type="text" ng-model="searchInput">
+    Busca: <input type="text" ng-model="searchInput"><br>
+    Limite de busca: <input type="number" ng-model="limit"><br>
 
     <table>
       <th>
         <td>
+      <tr>
+        <th>
           <b>Nome</b>
         </td>
         <td>
+        </th>
+        <th>
           <b>CPF</b>
         </td>
         <td>
+        </th>
+        <th>
           <b>E-mail</b>
         </td>
         <td>
+        </th>
+        <th>
           <b>Telefone</b>
         </td>
         <td>
+        </th>
+        <th>
           <b>Salário</b>
         </td>
       </th>
+
       <tr ng-repeat="employee in funcCtrl.employees">
+        </th>
+      </tr>
+
+      <tr ng-repeat="employee in funcCtrl.employees | filter:searchInput | orderBy:'name' | limitTo:limit">
         <td>
           {{employee.name}}
         </td>
-        <td>
-          {{employee.cpf}}
-        </td>
-        <td>
-          {{employee.email}}
-        </td>
-        <td>
-          {{employee.phone}}
-        </td>
-        <td>
-          {{employee.salary}}
-        </td>
-      </tr>
+         <td>
+           {{employee.cpf}}
+         </td>
+         <td>
+           {{employee.email}}
+         </td>
+         <td>
+           {{employee.phone}}
+         </td>
+         <td>
+           {{employee.salary}}
+         </td>
+       </tr>
     </table>
-
   </body>
+</html>
 </html>

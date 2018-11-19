@@ -1,6 +1,6 @@
 var app = angular.module('FuncionariosApp', []);
 
-app.controller('FuncionariosController', function() {
+app.controller('FuncionariosController', ['formataCpfFilter', 'formataTelFilter', function(formataCpf, formataTel) {
 
   this.employees = [
     {
@@ -68,4 +68,26 @@ app.controller('FuncionariosController', function() {
     }
   ];
 
+  this.employees.forEach(function(employee){
+    employee.cpf = formataCpf(employee.cpf.toString());
+    });
+
+  this.employees.forEach(function(employee){
+    employee.phone = formataTel(employee.phone.toString());
+    });
+
+}]);
+
+
+
+app.filter('formataCpf', function(){
+  return function(cpf){
+    return cpf.slice(0, 3) + "." + cpf.slice(3, 6) + "." + cpf.slice(6, 9) + "-" + cpf.charAt(9);
+  }
+});
+
+app.filter('formataTel', function(){
+  return function(tel){
+    return "(" + tel.slice(0, 2) + ")" + tel.slice(2, 6) + "-" + tel.slice(6, 10);
+  }
 });
