@@ -61,22 +61,22 @@ app.controller('ContactController', function(){
       }
       return -1;
     }
-    this.add = function(nomeC, telefoneC, emailC){
+    this.add = function(nomeContato, telefoneContato, emailContato){
 
-      var contato = {nome: nomeC, telefone: telefoneC, email: emailC};
+      var contato = {nome: nomeContato, telefone: telefoneContato, email: emailContato};
 
       if (this.contatoPos(contato) == -1){
           this.contatos.push(contato);
       }
     }
-    this.edit = function (contato, nomeC, telefoneC, emailC){
+    this.edit = function (contato, nomeContato, telefoneContato, emailContato){
       var i = this.contatoPos(contato);
 
-      this.contatos[i].nome = nomeC;
+      this.contatos[i].nome = nomeContato;
 
-      this.contatos[i].telefone = telefoneC;
+      this.contatos[i].telefone = telefoneContato;
 
-      this.contatos[i].email = emailC;
+      this.contatos[i].email = emailContato;
     }
     this.remove = function(contato){
       this.contatos.splice(this.contatoPos(contato), 1);
