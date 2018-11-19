@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <title>Exercício AngularJS: Services</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+        <script src="app3.js"></script>
+    </head>
+
+  <body>
+
+    <div ng-controller="LogController">
+
+        Mensagem: <input type="text" ng-model="mensagem"> <br>
+        Tipo:   <select name="tipo" ng-model="tipo">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                </select>
+
+        <button ng-click="LC.printLog(tipo, mensagem)">submit</button>
+
+    </div>
+  </body>
+</html>
