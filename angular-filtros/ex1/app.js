@@ -69,3 +69,25 @@ app.controller('FuncionariosController', function() {
   ];
 
 });
+
+
+app.filter('cpf', function() {
+  // Essa é a função que será executada toda vez que o filtro for invocado
+  return function (text) {
+  var cpf = text.toString();
+  var newCpf = cpf.split("");
+  if(newCpf[10]==undefined){
+    newCpf.splice(0, 0, 0);
+  }
+  return newCpf[0]+newCpf[1]+newCpf[2]+"."+newCpf[3]+newCpf[4]+newCpf[5]+"."+newCpf[6]+newCpf[7]+newCpf[8]+"-"+newCpf[9]+newCpf[10];
+  }
+});
+
+app.filter('telefone', function() {
+  // Essa é a função que será executada toda vez que o filtro for invocado
+  return function (text) {
+    var telefone = text.toString();
+    var newPhone = telefone.split("");
+    return "("+ newPhone[0] + newPhone[1] + ")" + newPhone[2] + newPhone[3] + newPhone[4]+ newPhone[5] + "-" +newPhone[6] + newPhone[7] + newPhone[8] + newPhone[9];
+  }
+});
