@@ -1,0 +1,27 @@
+<!DOCTYPE html> 
+<html ng-app> 
+    <head> 
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script> 
+        <meta charset="utf-8"> 
+        <title>Exercício 3</title> 
+    </head> 
+<body>
+    <form>
+        <label>Avaliação do Produto</label>
+        <select ng-model="rating">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <label>Comentario:</label>
+        <input type="text" ng-model="coment">
+    </form>
+
+    <div>
+        <p>Rating: {{rating}}</p>
+        <p>Comentario: {{coment}}</p>
+    </div>
+</body>
+</html>

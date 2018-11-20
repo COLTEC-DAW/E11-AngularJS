@@ -12,8 +12,8 @@
 
       <h2>Conversor de temperatura</h2>
       Celsius: <input type="text" ng-model="tempCtrl.celsius"> <br>
-      Kelvin: {{tempCtrl.celsiusToKelvin(tempCtrl.celsius)}} <br>
-      Fahrenheit: {{tempCtrl.celsiusToFahrenheit(tempCtrl.celsius)}} <br>
+      Kelvin: {{tempCtrl.getKelvin(tempCtrl.celsius)}} <br>
+      Fahrenheit: {{tempCtrl.getFahrenheit(tempCtrl.celsius)}} <br>
     </div>
   </body>
 </html>

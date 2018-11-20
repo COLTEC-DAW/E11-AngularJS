@@ -13,6 +13,48 @@
       <h2>Conversor de temperatura</h2>
       Celsius: <input type="text" ng-model="tempCtrl.celsius"> <br>
       Kelvin: {{tempCtrl.celsiusToKelvin(tempCtrl.celsius)}} <br>
+      Fahrenheit: {{tempCtrl.celsiusToFahrenheit(tempCtrl.celsius)}} <br>
+    </div>
+    <hr>
+    <div ng-controller="SalarioController as slctrl">
+        <h1>Calculadora de Imposto</h1>
+        Seu salário: <input type="number" ng-model="slctrl.salario"> <br>
+        Imposto: {{slctrl.calculaImposto(slctrl.salario)}} <br>
+    </div>
+    <hr>
+    <div ng-controller="reviewController as rev">
+        <h1>Reviews</h1>
+        <label>Avaliação do Produto</label>
+        <select ng-model="rev.rating">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <label>Comentario:</label>
+        <input type="text" ng-model="rev.comentario">
+        <button ng-click="rev.addReview(rev.rating, rev.comentario)">Add</button>
+        <div ng-repeat="r in rev.reviews">
+            <p>Review: {{r.rating}}</p>
+            <p>Comentário: {{r.comentario}}</p>
+    </div>
+    <hr>
+    <div ng-controller="contactController as con">
+      <h1>Contatos</h1>
+      <div>
+        <p>Nome <input type="text" ng-model="con.nome"></p>
+        <p>Email <input type="text" ng-model="con.email"></p>
+        <p>Telefone <input type="text" ng-model="con.telefone"></p>
+        <button ng-click="con.addContato(con.nome, con.telefone, con.email)">Add Contato</button>
+      </div>
+      <div ng-repeat="c in con.contatos">
+          <p>Nome: {{c.nome}}</p>
+          <p>Email: {{c.email}}</p>
+          <p>Telefone: {{c.telefone}}</p>
+          <button ng-click="con.removeContato(c.id)">Excluir</button>
+          <button ng-click="con.editaContato(c.id)">Editar</button>
+      </div>
     </div>
   </body>
 </html>
