@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>EX3</title>
+  </head>
+  <body>
+    <textarea type="textarea" ng-model="comentario" maxlength="500"></textarea>
+    <select ng-model="stars">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <p>{{comentario}}</p>
+    <img src="star{{stars}}.png" alt="star">
+  </body>
+</html>

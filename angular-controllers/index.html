@@ -9,10 +9,50 @@
   </head>
   <body>
     <div ng-controller="TemperaturaController as tempCtrl">
-
       <h2>Conversor de temperatura</h2>
       Celsius: <input type="text" ng-model="tempCtrl.celsius"> <br>
       Kelvin: {{tempCtrl.celsiusToKelvin(tempCtrl.celsius)}} <br>
+      Fahrenheit: {{tempCtrl.celsiusToFahrenheit(tempCtrl.celsius)}} <br>
+    </div>
+    <div ng-controller="ImpostoController as impostoCtrl">
+      Salario: <input type="number" ng-model="impostoCtrl.salario"> <br>
+      Imposto: {{impostoCtrl.calculaImposto(impostoCtrl.salario)}} <br>
+    </div>
+    <div ng-controller="ReviewController as reviewCtrl">
+      <input type="text" ng-model="reviewCtrl.comentario"> <br>
+      <select ng-model="reviewCtrl.stars"> <br>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <button type="button" ng-click="reviewCtrl.adicionarNaLista(reviewCtrl.comentario)">Adicionar</button>
+      <p>{{reviewCtrl.comentario}}</p>
+      <img src="star{{reviewCtrl.stars}}.png" alt="star">
+      <p ng-repeat="x in reviewCtrl.comentarios track by $index">{{$index}} - {{x}}</p>
+    </div>
+    <div ng-controller="ContactController as contactCtrl">
+      Nome: <input type="text" ng-model="contactCtrl.nome" required> <br>
+      Telefone: <input type="text" ng-model="contactCtrl.telefone" required> <br>
+      Email: <input type="text" ng-model="contactCtrl.email" required> <br>
+      <button type="button" ng-click="contactCtrl.addContato(contactCtrl.nome, contactCtrl.telefone, contactCtrl.email)">Adicionar</button>
+      <table>
+        <tr>
+          <th>Nome</th>
+          <th>Telefone</th>
+          <th>E-mail</th>
+          <th>Editar</th>
+          <th>Excluir</th>
+        </tr>
+        <tr ng-repeat="con in contactCtrl.contatos">
+          <td>{{con.nome}}</td>
+          <td>{{con.telefone}}</td>
+          <td>{{con.email}}</td>
+          <td><button type="button" ng-click="contactCtrl.editContato(con, contactCtrl.nome, contactCtrl.telefone, contactCtrl.email)">Editar</button></td>
+          <td><button type="button" ng-click="contactCtrl.removeContato(con)">Excluir</button></td>
+        </tr>
+      </table>
     </div>
   </body>
 </html>
