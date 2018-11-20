@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    <script src="app2.js"></script>
+  </head>
+  <body>
+    <div ng-controller="ComprasController as compras">
+      Nome: <input type="text" ng-model="compras.nome"><br>
+      Descricao: <input type="text" ng-model="compras.descricao"><br>
+      Preco: <input type="number" min="0" ng-model="compras.preco"><br>
+      Quantidade: <input type="number" min="0" ng-model="compras.quantidade"><br>
+      <button type="button" ng-click="compras.adicionar(compras.nome, compras.descricao, compras.preco, compras.quantidade)">Adicionar</button>
+    </div>
+    <div ng-controller="CheckoutController as ck">
+      <div ng-repeat="i in ck.getLista()">
+        <h2>{{i.nome}}  {{i.descricao}}  R{{i.preco | currency}}  {{i.quantidade}}</h2>
+      </div>
+      <h1>Preço total: {{ck.preco() | currency}}</h1>
+    </div>
+  </body>
+</html>
