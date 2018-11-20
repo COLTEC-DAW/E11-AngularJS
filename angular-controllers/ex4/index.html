@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Exercício AngularJS: Controllers</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <div ng-controller="contactController as ctcCtrl">
+
+      <h2>Cálculo de Imposto</h2>
+      Salário: <input type="number" ng-model="impCtrl.salario"> <br>
+      Imposto: {{impCtrl.calculaImposto(impCtrl.salario)}} <br>
+    </div>
+  </body>
+</html>

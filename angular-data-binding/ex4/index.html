@@ -1,0 +1,15 @@
+<html ng-app>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+  <meta charset="utf-8">
+  <title>Exercício 4</title>
+</head>
+<body>
+  <div>
+    <p>Preço: <input type="number" ng-model="cost"></p>
+    <p>Quantidade: <input type="number" ng-model="qty"></p>
+    <p>Custo Inicial: {{::cost | currency}}</p>
+    <b>Total:</b> {{qty * cost | currency}}
+    </div>
+</body>
+</html>

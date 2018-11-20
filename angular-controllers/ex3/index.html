@@ -1,0 +1,15 @@
+<html ng-app>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+  <meta charset="utf-8">
+  <title>Exercício 3</title>
+</head>
+<body>
+  <div ng-controller="reviewController as revCtrl">
+   	<p>Estrelas: <input type="range" min="0" max="5" ng-model="numEstrelas"></p>
+    <p>Review: <textarea rows="10" cols="100" ng-model="review"></textarea> </p>
+     <button ng-click='revCtrl.adicionarReview()'>Adicionar Review</button>
+  <h1> Estrelas : {{numEstrelas}</h1>
+ 	<h1> Review: {{review}}</h1>
+</body>
+</html>
