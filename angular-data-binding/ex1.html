@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="">
+    <p>Celcius: <input type="number" ng-model="celcius" ng-init="celcius=0" ></p>
+    <p>Fahrenheit: {{(celcius*1.8)+32}}°F</p>
+    <p>Kelvin: {{ celcius + 273.15  }}K</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="">
+    <h2>Conte sobre o produto</h2>
+    <textarea  ng-model="review" style="height: 100px; width:500px; " ></textarea>  
+    <p>Estrelas:  <input type="number" ng-model="estrelas" ng-init="estrelas=5" max=5 min=0 ></p>
+    <br>
+    <h3>Preview</h3>
+    <p> ** {{estrelas}} estrelas ** </p>
+    <p>{{review}}</p> 
+</div>
+
+</body>
+</html>

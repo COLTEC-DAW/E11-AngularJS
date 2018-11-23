@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <h2>Quando você deu o primeiro clique?</h2>  
+        <button ng-click="clique()">Clique</button>
+        <p>{{::horas}}</p>
+    </div>
+</body>
+</html>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.clique = function(){
+        var t = new Date;
+         $scope.horas = t.toLocaleString("pt-BR", {timeZone: "america/sao_paulo"});
+    }
+});
+</script>
