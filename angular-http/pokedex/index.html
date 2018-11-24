@@ -1,20 +1,28 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.min.js"></script>
-    <script src="app.js"></script>
-  </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
 
-  <body ng-app="pokedex">
-    <div ng-controller="PokedexController as pokeCtrl">
+<body ng-app="pokedex">
+  <div ng-controller="PokedexController as pokeCtrl">
       <h1>COLTECdex</h1>
-
+      <div>
+        <b>Pokemon selecionado</b>
+        <p>Nome: {{pokeCtrl.singlePokemon.name}}</p>
+        <p>Id: {{pokeCtrl.singlePokemon.id}}</p>
+      </div>
+      <br>
       <table>
         <tr><td><b>Pokemon</b></td></tr>
         <tr ng-repeat="pokemon in pokeCtrl.pokemons">
-          <td>{{pokemon.name}}</td>
+          <td>{{pokemon.pokemon_species.name}}</td><td><button ng-click="pokeCtrl.getDescription(pokemon.entry_number)">Detalhes</button></td>
         </tr>
       </table>
     </div>
-  </body>
+</body>
 </html>
