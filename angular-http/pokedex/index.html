@@ -1,20 +1,67 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.min.js"></script>
     <script src="app.js"></script>
-  </head>
+    <title>Face Analyzer: Análise Facial</title>
+</head>
+  <style>
+      .img-area {
+          overflow: hidden;
+          text-align: center;
+      }
+      .img-area img {
+          height: 250px;
+      }
+      .navbar{
+        background-color:#3399ff !important
+      }
+  </style>
+  <!-- Estilização -->
 
-  <body ng-app="pokedex">
-    <div ng-controller="PokedexController as pokeCtrl">
-      <h1>COLTECdex</h1>
+<body  ng-app="FaceApp" ng-controller="FaceController as faceCtrl"> 
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand">Face Analyzer</a>
+  </nav>
+      
+  <div class="wrapper">
+    <div class="container-fluid">
+      <div class="container-fluid col-sm-8 col-sm-offset-2 list-group-item flex-column align-items-start card">  
+        <div id="face" class="img-area" >
+            <img src={{faceCtrl.img_src}} alt="face"/> 
+        </div><br>
 
-      <table>
-        <tr><td><b>Pokemon</b></td></tr>
-        <tr ng-repeat="pokemon in pokeCtrl.pokemons">
-          <td>{{pokemon.name}}</td>
-        </tr>
-      </table>
-    </div>
-  </body>
+           <form name="formulario" ng-submit="faceCtrl.img_src=faceCtrl.loadingGif; faceCtrl.analisaFace(faceCtrl.url)" >
+             <input type="url" nome="url" ng-model="faceCtrl.url" class="form-control"  placeholder="URL da imagem" required>
+             <input type="submit" value="Analisar" class="btn btn-primary">              
+           </form> 
+        <table style="width:100%">
+          <tr>
+            <th>Gênero:</th>
+            <td>{{faceCtrl.face_info.genero}}</td>
+          </tr>
+          <tr>
+            <th>Idade:</th>
+            <td>{{faceCtrl.face_info.idade}}</td>
+          </tr>
+          <tr>
+            <th>Etnia:</th>
+            <td>{{faceCtrl.face_info.etnia}}</td>
+          </tr>
+          <tr>
+            <th>Emoção:</th>
+            <td>{{faceCtrl.face_info.emocao}}</td>
+          </tr>        
+        </table>
+        </div>
+      </div>
+    </div>  
+  </div>
+</body>
 </html>
