@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Exercício AngularJS: Controllers</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <div ng-controller="ContactController  as contCtrl">
+            <h2>Contatos</h2><br>
+
+        <div class="row col-sm-12">
+
+            <div class="col-sm-4 card"><br>  
+                Nome: <input ng-model="contCtrl.nome" ><br>
+                Telefone: <input ng-model="contCtrl.telefone" ><br>
+                Email:<input ng-model="contCtrl.email" ><br><br>
+                <button ng-click="contCtrl.addCont(contCtrl.nome, contCtrl.telefone, contCtrl.email)">Adicionar</button>
+                <br>
+            </div>
+ 
+            <div class="col-sm-5">
+                <div  class="card" style="width: 100%;" ng-repeat="ct in contCtrl.contArray">
+                        <p>{{ct.nome}}</p>
+                        <p>{{ct.telefone}}</p>
+                        <p>{{ct.email}}</p>
+                        <button ng-click="contCtrl.rmCont(ct)">Remover</button>
+                </div>
+            </div>
+
+        </div>
+        
+
+    </body>
+</html>
